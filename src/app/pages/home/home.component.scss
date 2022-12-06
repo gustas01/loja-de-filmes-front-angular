@@ -1,0 +1,11 @@
+@import '../../../config-scss/rem-calc.scss';
+
+.main{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  height: fit-content;
+  padding: rem-calc(10);
+  gap: rem-calc(15);
+  // background-image: url('../../../assets/bg.jpg');
+  background-color: #777;
+}

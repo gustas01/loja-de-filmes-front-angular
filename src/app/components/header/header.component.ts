@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   submitNameMovie(form: NgForm ){
     //implementar chamanda na API que busca filme por nome
+    // console.log(form.value.moviename);
   }
 
 }

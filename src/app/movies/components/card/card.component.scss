@@ -1,0 +1,27 @@
+.actions{
+  display: flex;
+  justify-content: space-around;
+
+  button{
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:first-child{
+      color: green;
+
+      &:hover{
+        color: rgb(2, 173, 2);
+      }
+    }
+
+    &:nth-child(2){
+      color: red;
+
+      &:hover{
+        color: rgb(252, 80, 80);
+      }
+    }
+  }
+}

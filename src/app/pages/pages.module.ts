@@ -10,6 +10,7 @@ import { UpdateComponent } from './update/update.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MoviesModule } from '../movies/movies.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    MoviesModule
   ]
 })
 export class PagesModule { }

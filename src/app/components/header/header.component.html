@@ -7,7 +7,7 @@
 
   <span class="header__form">
     <form #form="ngForm" (ngSubmit)="submitNameMovie(form)">
-      <input type="text">
+      <input type="text" name="moviename" ngModel>
       <i class="material-icons">
         search
       </i>
@@ -16,6 +16,7 @@
 
   <i class="material-icons">
     wb_sunny
+    <!-- brightness_3 -->
   </i>
 
   <div class="header__buttons">
