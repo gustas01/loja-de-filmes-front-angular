@@ -1,2 +1,35 @@
-<p>header works!</p>
+<mat-toolbar class="header">
+  <a routerLink="/">
+    <i class="material-icons">
+      camera_roll
+    </i>
+  </a>
+
+  <span class="header__form">
+    <form #form="ngForm" (ngSubmit)="submitNameMovie(form)">
+      <input type="text">
+      <i class="material-icons">
+        search
+      </i>
+    </form>
+  </span>
+
+  <i class="material-icons">
+    wb_sunny
+  </i>
+
+  <div class="header__buttons">
+    <p>Usuário</p>
+
+    <i class="material-icons">
+      favorite
+    </i>
+
+    <i class="material-icons">
+      shopping_cart
+    </i>
+  </div>
+
+</mat-toolbar>
+
 <router-outlet></router-outlet>

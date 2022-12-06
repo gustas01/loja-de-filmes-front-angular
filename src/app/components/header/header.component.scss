@@ -1,0 +1,50 @@
+@import '../../../config-scss/rem-calc.scss';
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 rem-calc(40);
+
+  i{
+    cursor: pointer;
+  }
+
+  a{
+    color: white;
+  }
+
+  &__form{
+    display: flex;
+    background-color: white;
+    width: rem-calc(500);
+    border-radius: 10px;
+    overflow: hidden;
+    color: #000;
+  }
+
+  form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    input{
+      width: 100%;
+      font-size: rem-calc(20);
+      padding: rem-calc(5);
+    }
+
+  }
+
+  &__buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: rem-calc(200);
+
+    p{
+      margin: 0;
+    }
+  }
+}
