@@ -1,8 +1,8 @@
-@import '../../../config-scss/rem-calc.scss';
+@use '../../../config-scss/rem-calc.scss' as *;
 
 .main{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   height: fit-content;
   padding: rem-calc(10);
   gap: rem-calc(15);
