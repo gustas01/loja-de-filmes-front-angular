@@ -11,7 +11,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MoviesModule } from '../movies/movies.module';
-
+import { UserModule } from '../user/user.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { MoviesModule } from '../movies/movies.module';
   imports: [
     CommonModule,
     PagesRoutingModule,
-    MoviesModule
+    MoviesModule,
+    UserModule
   ]
 })
 export class PagesModule { }

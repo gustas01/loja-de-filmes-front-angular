@@ -22,7 +22,7 @@
   <div class="header__buttons">
     <p>Usuário</p>
 
-    <i class="material-icons">
+    <i class="material-icons" (click)="openFavorites = !openFavorites">
       favorite
     </i>
 
@@ -33,4 +33,12 @@
 
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="openFavorites" mode="over" position="end">
+    <app-favorites></app-favorites>
+  </mat-sidenav>
+  <mat-sidenav-content >
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
