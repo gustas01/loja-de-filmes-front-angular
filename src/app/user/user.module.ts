@@ -8,13 +8,15 @@ import { UserRoutingModule } from './user-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     SignupComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    ShoppingCartComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,6 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
     MatMenuModule,
     MatToolbarModule
   ],
-  exports: [FavoritesComponent]
+  exports: [FavoritesComponent, ShoppingCartComponent]
 })
 export class UserModule { }

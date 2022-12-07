@@ -22,11 +22,11 @@
   <div class="header__buttons">
     <p>Usuário</p>
 
-    <i class="material-icons" (click)="openFavorites = !openFavorites">
+    <i class="material-icons" (click)="toggleFavoritesNav()">
       favorite
     </i>
 
-    <i class="material-icons">
+    <i class="material-icons" (click)="toggleShoppingCartNav()">
       shopping_cart
     </i>
   </div>
@@ -37,6 +37,9 @@
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="openFavorites" mode="over" position="end">
     <app-favorites></app-favorites>
+  </mat-sidenav>
+  <mat-sidenav [(opened)]="openShoppingCart" mode="over" position="end">
+    <app-shopping-cart></app-shopping-cart>
   </mat-sidenav>
   <mat-sidenav-content >
     <router-outlet></router-outlet>
