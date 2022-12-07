@@ -35,10 +35,10 @@
 
 
 <mat-sidenav-container>
-  <mat-sidenav [(opened)]="openFavorites" mode="over" position="end">
+  <mat-sidenav [opened]="openFavorites" mode="side" position="end">
     <app-favorites></app-favorites>
   </mat-sidenav>
-  <mat-sidenav [(opened)]="openShoppingCart" mode="over" position="end">
+  <mat-sidenav [opened]="openShoppingCart" mode="side" position="end">
     <app-shopping-cart></app-shopping-cart>
   </mat-sidenav>
   <mat-sidenav-content >
