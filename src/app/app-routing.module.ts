@@ -12,7 +12,6 @@ const routes: Routes = [
           loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
         }
       ],
-      title: 'Home'
     },
 ];
 

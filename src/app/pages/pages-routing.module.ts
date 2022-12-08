@@ -12,27 +12,33 @@ import { UpdateComponent } from './update/update.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    title: 'Home'
   },
   {
     path: 'checkout',
-    component: CheckoutComponent
+    component: CheckoutComponent,
+    title: 'Finalizar a compra'
   },
   {
     path: 'loginsignup',
-    component: LoginSignupComponent
+    component: LoginSignupComponent,
+    title: 'Login - Criar conta'
   },
   {
     path: 'details',
-    component: MovieDetailsComponent
+    component: MovieDetailsComponent,
+    title: 'Detalhes do filme'
   },
   {
     path: 'update',
-    component: UpdateComponent
+    component: UpdateComponent,
+    title: 'Dados da sua conta'
   },
   {
     path: '**',
-    component: NotFoundComponent
+    component: NotFoundComponent,
+    title: 'Endereço não encontrado'
   },
 ];
 

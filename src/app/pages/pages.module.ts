@@ -5,6 +5,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { HomeComponent } from './home/home.component';
 
 import { CheckoutComponent } from './checkout/checkout.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { UpdateComponent } from './update/update.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
@@ -26,7 +27,8 @@ import { UserModule } from '../user/user.module';
     CommonModule,
     PagesRoutingModule,
     MoviesModule,
-    UserModule
+    UserModule,
+    MatTabsModule,
   ]
 })
 export class PagesModule { }

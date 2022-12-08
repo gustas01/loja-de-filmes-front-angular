@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { UserModule } from './user/user.module';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UserModule } from './user/user.module';
     MatToolbarModule,
     FormsModule,
     MatSidenavModule,
-    UserModule
+    UserModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

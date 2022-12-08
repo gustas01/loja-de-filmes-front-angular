@@ -12,6 +12,7 @@
 
   a{
     color: white;
+    display: contents;
   }
 
   &__form{
@@ -51,6 +52,6 @@
 
 .mat-sidenav{
   min-width: rem-calc(350);
-  height: 100vh;
+  height: calc(100vh - rem-calc(64));
   border-radius: 0 0 0 10px;
 }

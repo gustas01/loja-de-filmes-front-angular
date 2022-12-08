@@ -1,0 +1,6 @@
+@use 'src/config-scss/rem-calc.scss' as *;
+
+.mat-tab-group{
+  height: calc(100vh - 64px);
+  align-items: center;
+}

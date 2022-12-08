@@ -35,13 +35,23 @@
 
 
 <mat-sidenav-container>
-  <mat-sidenav [opened]="openFavorites" mode="side" position="end">
-    <app-favorites></app-favorites>
+  <mat-sidenav [opened]="openFavorites || openShoppingCart " mode="over" position="end">
+    <app-favorites *ngIf="openFavorites"></app-favorites>
+    <app-shopping-cart *ngIf="openShoppingCart"></app-shopping-cart>
   </mat-sidenav>
-  <mat-sidenav [opened]="openShoppingCart" mode="side" position="end">
-    <app-shopping-cart></app-shopping-cart>
-  </mat-sidenav>
-  <mat-sidenav-content >
+
+  <!-- <mat-sidenav [opened]="openShoppingCart" position="end">
+    <mat-tab-group>
+      <mat-tab label="Favoritos">
+        <app-favorites></app-favorites>
+      </mat-tab>
+      <mat-tab label="Carrinho de compras">
+        <app-shopping-cart></app-shopping-cart>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-sidenav> -->
+
+  <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
