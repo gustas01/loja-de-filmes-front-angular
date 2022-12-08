@@ -2,5 +2,7 @@
 
 .mat-tab-group{
   height: calc(100vh - 64px);
-  align-items: center;
+  width: 35%;
+  margin: 0 auto;
+  min-width: 350px;
 }
