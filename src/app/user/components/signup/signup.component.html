@@ -1,1 +1,40 @@
-<p>signup works!</p>
+<mat-card>
+  <img src="../../../assets/user-icon.svg" alt="user-icon">
+  <form [formGroup]="loginForm" (ngSubmit)="signup()">
+    <mat-form-field>
+      <mat-label class="mat-label">Nome</mat-label>
+      <span>
+        <i class="material-icons">person_add</i>
+        <input matInput type="text" formControlName="name" placeholder="Digite seu nome">
+      </span>
+      <mat-error *ngIf="this.loginForm.controls.name.errors">
+        O nome deve conter pelo menos 3 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label class="mat-label">Email</mat-label>
+      <span>
+        <i class="material-icons">email</i>
+        <input matInput type="email" formControlName="email" placeholder="Digite seu email">
+      </span>
+      <mat-error *ngIf="this.loginForm.controls.email.errors">
+        Email inválido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label class="mat-label">Senha</mat-label>
+      <span>
+        <i class="material-icons">lock</i>
+        <input matInput type="password" formControlName="password" placeholder="Digite sua senha">
+      </span>
+      <mat-error *ngIf="this.loginForm.controls.password.errors">
+        A senha deve conter pelo menos 8 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">Entrar</button>
+
+  </form>
+</mat-card>
