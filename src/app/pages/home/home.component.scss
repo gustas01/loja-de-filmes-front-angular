@@ -4,8 +4,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   height: fit-content;
-  padding: rem-calc(10);
+  padding: 1% 2%;
   gap: rem-calc(15);
   // background-image: url('../../../assets/bg.jpg');
-  background-color: #777;
+  // background-color: #777;
 }

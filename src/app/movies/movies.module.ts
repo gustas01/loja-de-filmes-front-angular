@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http'
+
 import { MatCardModule } from '@angular/material/card';
 
 import { MoviesRoutingModule } from './movies-routing.module';
@@ -13,7 +15,8 @@ import { CardComponent } from './components/card/card.component';
   imports: [
     CommonModule,
     MoviesRoutingModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   exports: [CardComponent]
 })

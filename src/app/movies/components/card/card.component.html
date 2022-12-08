@@ -1,15 +1,15 @@
 <mat-card>
-  <!-- <mat-card-header> -->
-    <mat-card-title>Shiba Inuzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</mat-card-title>
-  <!-- </mat-card-header> -->
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  <mat-card-content class="content">
-    <span>25 de Dezembro de 2022</span>
-    <span>Terror</span>
-    <span>10 estrelas</span>
-  </mat-card-content>
-  <mat-card-actions class="actions">
-    <button mat-button>+Carrinho<i class="material-icons">add_shopping_cart</i></button>
-    <button mat-button>+Favoritos<i class="material-icons">favorite</i></button>
-  </mat-card-actions>
+  <mat-card-title>{{ movie.title }}</mat-card-title>
+  <img mat-card-image src='{{urlMoviePoster}}/{{movie.poster_path}}' alt="Movie's Poster">
+  <span>
+    <mat-card-content class="content">
+      <span #date></span>
+      <span>{{ movie.mainGenre}}</span>
+      <span class="movieStars">{{ movie.vote_average.toFixed(2)}} <i class="material-icons">star</i></span>
+    </mat-card-content>
+    <mat-card-actions class="actions">
+      <button mat-button>+Carrinho<i class="material-icons">add_shopping_cart</i></button>
+      <button mat-button>+Favoritos<i class="material-icons">favorite</i></button>
+    </mat-card-actions>
+  </span>
 </mat-card>

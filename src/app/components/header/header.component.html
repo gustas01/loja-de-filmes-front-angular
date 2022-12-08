@@ -7,7 +7,7 @@
 
   <span class="header__form">
     <form #form="ngForm" (ngSubmit)="submitNameMovie(form)">
-      <input type="text" name="moviename" ngModel>
+      <input type="text" name="moviename" placeholder="Pesquisar filme..." ngModel>
       <i class="material-icons" (click)="submitNameMovie(form)">
         search
       </i>

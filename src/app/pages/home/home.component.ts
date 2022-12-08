@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
+import { IMovie } from 'src/app/models/imovie';
+import { MovieService } from 'src/app/movies/services/movie.service';
 
 @Component({
   selector: 'app-home',
@@ -6,30 +9,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public filmes: Array<{name: string, genre: string, release: string, stars: number}> = [
-    {
-      name: 'Matrix',
-      genre: 'Ação',
-      release: '10 de Janeiro de 1999',
-      stars: 5
-    },
-    {
-      name: 'As braquelas',
-      genre: 'Comédia',
-      release: '17 de Março de 2010',
-      stars: 8
-    },
-    {
-      name: 'Interestelar',
-      genre: 'Fição-Científica',
-      release: '25 de Junho de 2014',
-      stars: 2
-    },
-  ]
+  public movies: Array<IMovie> = []
 
-  constructor() { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
+    const movies = this.movieService.getMovies()
+    const genres = this.movieService.getGenres()
+
+    forkJoin([movies, genres]).subscribe({
+      next: res => {
+        this.movies = res[0].results
+
+        this.movies.map(movie => movie.mainGenre = res[1].genres.filter(genre =>
+          movie.genre_ids[0] === genre.id ? genre.name : null
+        )[0]?.name)
+      }
+    })
+    // this.movieService.getMovies(1).subscribe({
+    //   next: res => {
+    //     this.movies = res.results
+    //     console.log(this.movies);
+    //   }
+    // })
   }
 
 }

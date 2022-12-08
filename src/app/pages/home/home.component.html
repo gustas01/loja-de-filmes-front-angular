@@ -1,16 +1,5 @@
 <main class="main">
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
+  <ng-template ngFor let-movie [ngForOf]="movies">
+    <app-card [movie]="movie"></app-card>
+  </ng-template>
 </main>
