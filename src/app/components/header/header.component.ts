@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -10,10 +10,10 @@ export class HeaderComponent implements OnInit {
   public openFavorites: boolean = false
   public openShoppingCart: boolean = false
 
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   submitNameMovie(form: NgForm ){
     //implementar chamanda na API que busca filme por nome

@@ -1,4 +1,5 @@
-<main class="main">
+<main class="main" [ngClass]="{'loading': !movies.length}">
+  <mat-spinner *ngIf="!movies.length"></mat-spinner>
   <ng-template ngFor let-movie [ngForOf]="movies">
     <app-card [movie]="movie"></app-card>
   </ng-template>

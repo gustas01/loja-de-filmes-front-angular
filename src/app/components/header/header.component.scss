@@ -29,7 +29,7 @@
     border-radius: 10px;
     overflow: hidden;
     color: #000;
-    margin-left: 10px;
+    margin: 0 10px;
   }
 
   form{
@@ -51,7 +51,7 @@
     justify-content: space-between;
     align-items: center;
     width: rem-calc(200);
-
+    margin-left: 10px;
     p{
       margin: 0;
     }
@@ -62,4 +62,40 @@
   min-width: rem-calc(350);
   height: calc(100vh - rem-calc(64));
   border-radius: 0 0 0 10px;
+}
+
+
+.subHeader{
+  display: none;
+}
+
+@media (max-width: 599px){
+  .header{
+
+    i:first-child{
+      font-size: 40px;
+    }
+
+    &__buttons{
+      display: none;
+    }
+  }
+
+
+  .subHeader{
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 4px;
+
+    i{
+      cursor: pointer;
+    }
+  }
+
+
+  .mat-sidenav{
+    height: calc(100vh - rem-calc(100));
+  }
 }

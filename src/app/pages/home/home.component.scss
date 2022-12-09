@@ -6,6 +6,19 @@
   height: fit-content;
   padding: 1% 2%;
   gap: rem-calc(15);
-  // background-image: url('../../../assets/bg.jpg');
-  // background-color: #777;
+
+  .mat-spinner{
+    z-index: 2;
+    // margin: auto auto;
+    // height: calc(100vh - 100px)!important;
+    // align-self: center;
+    // top: calc(50% - 56px);
+  }
+}
+
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 54px);
 }

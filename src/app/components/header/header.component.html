@@ -33,6 +33,19 @@
 
 </mat-toolbar>
 
+<!-- essa toolbar só aparecerá em telas pequenas-->
+<mat-toolbar class="subHeader">
+    <span>Usuário</span>
+
+    <i class="material-icons" (click)="toggleFavoritesNav()">
+      favorite
+    </i>
+
+    <i class="material-icons" (click)="toggleShoppingCartNav()">
+      shopping_cart
+    </i>
+</mat-toolbar>
+
 
 <mat-sidenav-container>
   <mat-sidenav [opened]="openFavorites || openShoppingCart " mode="over" position="end">
