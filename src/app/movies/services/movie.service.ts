@@ -6,7 +6,6 @@ import { IPageOfMovies } from 'src/app/models/ipage-of-movies';
 
 import { environment } from 'src/environments/environment';
 import { MoviesModule } from '../movies.module';
-import { IMovie } from 'src/app/models/imovie';
 import { IGenres } from 'src/app/models/igenres';
 
 @Injectable({
