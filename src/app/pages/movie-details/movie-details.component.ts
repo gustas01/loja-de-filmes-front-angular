@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { IMovie } from 'src/app/models/imovie';
 
 @Component({
   selector: 'app-movie-details',
@@ -6,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-details.component.scss']
 })
 export class MovieDetailsComponent implements OnInit {
+  public movie = this.location.getState() as IMovie
 
-  constructor() { }
+  constructor(private location: Location) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

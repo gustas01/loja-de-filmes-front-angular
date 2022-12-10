@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card (click)="movieDetails()">
   <mat-card-title>{{ movie.title }}</mat-card-title>
   <img mat-card-image src='{{urlMoviePoster}}/{{movie.poster_path}}' alt="Movie's Poster">
   <span>

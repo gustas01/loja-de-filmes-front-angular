@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 
 import { IMovie } from 'src/app/models/imovie';
 
@@ -17,7 +18,7 @@ export class CardComponent implements OnInit, AfterViewInit  {
   public months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngAfterViewInit(): void {
     const date = new Date(this.movie?.release_date)
@@ -28,6 +29,11 @@ export class CardComponent implements OnInit, AfterViewInit  {
 
   }
 
-
+  movieDetails(){
+    const movie: NavigationExtras = {
+      state: this.movie
+    }
+    this.router.navigate(['/details'], movie)
+  }
 
 }
