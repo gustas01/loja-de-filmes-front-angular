@@ -14,8 +14,10 @@ export class CardComponent implements OnInit, AfterViewInit  {
   @ViewChild('date') date!: ElementRef
 
   @Input() public movie!: IMovie
-  public urlMoviePoster: string = constants.baseURLImagesOriginal
+  public urlMoviePoster: string = constants.baseURLImagesW400
   public months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+
+public select: boolean = false;
 
 
   constructor(private router: Router) { }

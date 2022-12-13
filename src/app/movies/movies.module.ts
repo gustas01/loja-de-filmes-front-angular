@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http'
 
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { MoviesRoutingModule } from './movies-routing.module';
 import { CardComponent } from './components/card/card.component';
@@ -16,7 +18,9 @@ import { CardComponent } from './components/card/card.component';
     CommonModule,
     MoviesRoutingModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatChipsModule
   ],
   exports: [CardComponent]
 })

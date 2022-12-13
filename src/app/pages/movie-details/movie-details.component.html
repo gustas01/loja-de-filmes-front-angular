@@ -1,4 +1,18 @@
-<p>movie-details works!</p>
-<div id="detailsContainer" [ngStyle]="{'background': backgroundMovie, 'background-repeat': 'round'}">
-    {{movie.title}}
+<div class="container">
+  <div class="container__image" [ngStyle]="{'background': backgroundMovie, 'background-repeat': 'no-repeat'}">
+  </div>
+
+  <section class="details">
+    <mat-card>
+      <img [src]="posterImage" alt="poster do filme">
+      
+      <mat-card-actions>
+        <button mat-raised-button color="primary"> <i class="material-icons">play_circle_outline</i> Trailer </button>
+      </mat-card-actions>
+    </mat-card>
+
+    <div class="details__metadata">
+      abc
+    </div>
+  </section>
 </div>
