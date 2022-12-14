@@ -26,7 +26,7 @@ const routes: Routes = [
     title: 'Login - Criar conta'
   },
   {
-    path: 'details',
+    path: 'details/:id',
     component: MovieDetailsComponent,
     title: 'Detalhes do filme'
   },

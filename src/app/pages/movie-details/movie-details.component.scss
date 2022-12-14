@@ -1,6 +1,6 @@
 .container{
   position: relative;
-  background-color: #000;
+  // background-color: #000;
   
   &__image{
     height: 100%;
@@ -48,4 +48,11 @@
     z-index: 1;
   }
  
+}
+
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 54px);
 }

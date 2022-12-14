@@ -32,10 +32,7 @@ public select: boolean = false;
   }
 
   movieDetails(){
-    const movie: NavigationExtras = {
-      state: this.movie
-    }
-    this.router.navigate(['/details'], movie)
+    this.router.navigate(['/details', `${this.movie.id}`])
   }
 
 }
