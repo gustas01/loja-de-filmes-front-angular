@@ -1,6 +1,5 @@
 .container{
   position: relative;
-  // background-color: #000;
   
   &__image{
     height: 100%;
@@ -18,8 +17,8 @@
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   justify-items: center;
   padding: 15px;
-  min-height: calc(100vh - 50px);
-  
+  min-height: calc(100vh - 64px);
+  // tirar esses 64px da linha de cima quando colocar mais coisas na parte de baixo do movieDetails
 
   .mat-card{
     width: 54%;
