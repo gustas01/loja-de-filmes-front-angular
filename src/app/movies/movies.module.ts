@@ -5,13 +5,16 @@ import { HttpClientModule } from '@angular/common/http'
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MoviesRoutingModule } from './movies-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CardComponent } from './components/card/card.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 @NgModule({
   declarations: [
-    CardComponent
+    CardComponent,
+    CarouselComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +22,8 @@ import { CardComponent } from './components/card/card.component';
     MatCardModule,
     HttpClientModule,
     MatButtonModule,
+    NgbModule
   ],
-  exports: [CardComponent]
+  exports: [CardComponent, CarouselComponent]
 })
 export class MoviesModule { }

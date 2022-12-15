@@ -1,11 +1,24 @@
-.container{
-  position: relative;
+.detailsContainer{
+  margin: 0;
+  padding: 0;
   
   &__image{
     height: 100%;
     width: 100%;
     background-position: center !important;
     position: absolute;
+  }
+
+  .carousel-card{
+    width: 52%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    min-width: 320px;
+  }
+
+  h4{
+    font-size: 1.5rem;
+    text-align: center;
   }
 }
 
@@ -15,15 +28,22 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 15px;
   justify-items: center;
   padding: 15px;
   min-height: calc(100vh - 64px);
   // tirar esses 64px da linha de cima quando colocar mais coisas na parte de baixo do movieDetails
 
   &__metadata{
-    // z-index: 1;
-    // color: green;
     height: fit-content;
+
+    .mat-card-actions{
+      display: flex;
+
+      button:first-child{
+        flex: 1;
+      }
+    }
   }
 
 
@@ -59,4 +79,8 @@
   justify-content: center;
   align-items: center;
   height: calc(100vh - 54px);
+}
+
+.selected{
+  box-shadow:0px 0px 0px 1px #fff;
 }

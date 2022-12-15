@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { UserModule } from './user/user.module';
 import { MatTabsModule } from '@angular/material/tabs';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     FormsModule,
     MatSidenavModule,
     UserModule,
-    MatTabsModule
+    MatTabsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

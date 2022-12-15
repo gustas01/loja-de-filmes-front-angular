@@ -16,7 +16,7 @@ export class MovieDetailsComponent implements OnInit {
   public backgroundMovie!: string
   public posterImage!: string
   public select: boolean = false;
-
+public a:number = 3.9
   constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService) { }
 
   ngOnInit(): void {

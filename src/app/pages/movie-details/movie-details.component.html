@@ -1,9 +1,10 @@
-<div class="container" [ngClass]="{'loading': !movie}">
+<div class="detailsContainer" [ngClass]="{'loading': !movie}">
   <mat-spinner *ngIf="!movie"></mat-spinner>
-  <div class="container__image" [ngStyle]="{'background': backgroundMovie, 'background-repeat': 'no-repeat'}">
+  <div class="detailsContainer__image" [ngStyle]="{'background': backgroundMovie, 'background-repeat': 'no-repeat'}">
   </div>
 
   <section class="details" *ngIf="movie">
+   
     <mat-card>
       <img [src]="posterImage" alt="poster do filme">
       
@@ -12,26 +13,34 @@
       </mat-card-actions>
     </mat-card>
 
-    <!-- <div class="details__metadata"> -->
-      <mat-card class="details__metadata">
-        <mat-card-title><h1>{{ movie.title }}</h1></mat-card-title>
-        <mat-card-actions>
-          <button mat-raised-button color="warn" (click)="select = !select">
-            <i class="material-icons" *ngIf="select">check</i>Carrinho<i class="material-icons">add_shopping_cart</i>
-          </button>
-          <button mat-raised-button color="primary">SHARE</button>
-        </mat-card-actions>
-        <mat-card-content>
-          <!-- adicionar estrelas de avaliação -->
-          <h2>Sinopse</h2>
-          {{ movie.overview }}
-        </mat-card-content>
-        <mat-card-footer>
-          <b>Ano de lançamento:</b> {{movie.release_date.slice(0, 4)}}
-          <b>Gênero:</b> {{movie.mainGenre}}
-        </mat-card-footer>
-      </mat-card>
+    <mat-card class="details__metadata">
+      <mat-card-title><h1>{{ movie.title }}</h1></mat-card-title>
+
+      <mat-card-actions>
+        <button mat-raised-button color="warn" (click)="select = !select" [ngClass]="{'selected': select}">
+          <i class="material-icons" *ngIf="select">check</i>Carrinho<i class="material-icons">add_shopping_cart</i>
+        </button>
+        <button mat-button><i class="material-icons">favorite</i></button>
+      </mat-card-actions>
+
+      <mat-card-content>
+        Média de avaliações: <ngb-rating [max]="10" [(rate)]="movie.vote_average" [readonly]="true" class="filled"></ngb-rating><br>
+        Total de votos: {{movie.vote_count}}
+        <h2>Sinopse</h2>
+        {{ movie.overview }}
+      </mat-card-content>
+
+      <mat-card-footer>
+        <b>Ano de lançamento:</b> {{movie.release_date.slice(0, 4)}}<br>
+        <b>Gênero:</b> {{movie.mainGenre}}
+      </mat-card-footer>
+    </mat-card>
       
-    <!-- </div> -->
   </section>
+
+    <mat-card class="carousel-card">
+      <h4>Filmes relacionados</h4>
+      <app-carousel></app-carousel> 
+    </mat-card>
+    
 </div>
