@@ -7,7 +7,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  loginForm = this.formBuilder.group({
+  signupForm = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
@@ -18,8 +18,8 @@ export class SignupComponent implements OnInit {
   }
 
   signup(){
-    // if(this.loginForm.valid){
-      //fazer login
+    // if(this.signupForm.valid){
+      //criar conta
     // }
   }
 }

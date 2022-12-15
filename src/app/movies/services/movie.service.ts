@@ -14,8 +14,6 @@ import { IMovie } from 'src/app/models/imovie';
 })
 export class MovieService {
 
-  private urlGenres = `${environment.baseUrl}/genres`
-
   constructor(private http: HttpClient) { }
 
   public getMovies(page:number = 1): Observable<IPageOfMovies>{
@@ -26,7 +24,15 @@ export class MovieService {
     return this.http.get<IGenres>(`${environment.baseUrl}/genres`)
   }
 
+  public getGenreById(id: number): Observable<string>{
+    return this.http.get<string>(`${environment.baseUrl}/genres/${id}`)
+  }
+
   public getMovieById(id: number): Observable<IMovie>{
     return this.http.get<IMovie>(`${environment.baseUrl}/search/${id}`)
+  }
+
+  public getTrailer(id: number): Observable<string>{
+    return this.http.get<string>(`${environment.baseUrl}/trailer/${id}`)
   }
 }

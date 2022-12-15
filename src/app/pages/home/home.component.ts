@@ -14,10 +14,10 @@ export class HomeComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    const movies = this.movieService.getMovies()
-    const genres = this.movieService.getGenres()
+    const getMovies = this.movieService.getMovies()
+    const getGenres = this.movieService.getGenres()
 
-    forkJoin([movies, genres]).subscribe({
+    forkJoin([getMovies, getGenres]).subscribe({
       next: res => {
         this.movies = res[0].results
 

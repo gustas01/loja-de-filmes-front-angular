@@ -8,12 +8,30 @@
       <img [src]="posterImage" alt="poster do filme">
       
       <mat-card-actions>
-        <button mat-raised-button color="primary"> <i class="material-icons">play_circle_outline</i> Trailer </button>
+        <a [href]="trailerURL" target="_blank" mat-raised-button color="primary"> <i class="material-icons">play_circle_outline</i> Trailer </a>
       </mat-card-actions>
     </mat-card>
 
-    <div class="details__metadata">
-      abc
-    </div>
+    <!-- <div class="details__metadata"> -->
+      <mat-card class="details__metadata">
+        <mat-card-title><h1>{{ movie.title }}</h1></mat-card-title>
+        <mat-card-actions>
+          <button mat-raised-button color="warn" (click)="select = !select">
+            <i class="material-icons" *ngIf="select">check</i>Carrinho<i class="material-icons">add_shopping_cart</i>
+          </button>
+          <button mat-raised-button color="primary">SHARE</button>
+        </mat-card-actions>
+        <mat-card-content>
+          <!-- adicionar estrelas de avaliação -->
+          <h2>Sinopse</h2>
+          {{ movie.overview }}
+        </mat-card-content>
+        <mat-card-footer>
+          <b>Ano de lançamento:</b> {{movie.release_date.slice(0, 4)}}
+          <b>Gênero:</b> {{movie.mainGenre}}
+        </mat-card-footer>
+      </mat-card>
+      
+    <!-- </div> -->
   </section>
 </div>

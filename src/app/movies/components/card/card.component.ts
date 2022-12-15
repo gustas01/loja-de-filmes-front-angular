@@ -17,7 +17,7 @@ export class CardComponent implements OnInit, AfterViewInit  {
   public urlMoviePoster: string = constants.baseURLImagesW400
   public months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
 
-public select: boolean = false;
+  public select: boolean = false;
 
 
   constructor(private router: Router) { }
