@@ -1,6 +1,6 @@
 <div class="detailsContainer" [ngClass]="{'loading': !movie}">
   <mat-spinner *ngIf="!movie"></mat-spinner>
-  <div class="detailsContainer__image" [ngStyle]="{'background': backgroundMovie, 'background-repeat': 'no-repeat'}">
+  <div *ngIf="movie && movie.backdrop_path !== null" class="detailsContainer__image" [ngStyle]="{'background': backgroundMovie, 'background-repeat': 'no-repeat'}">
   </div>
 
   <section class="details" *ngIf="movie">
@@ -38,9 +38,9 @@
       
   </section>
 
-    <mat-card class="carousel-card" *ngIf="movie">
+    <mat-card class="carousel-card" *ngIf="relatedMovies && movie">
       <h4>Filmes relacionados</h4>
-      <app-carousel></app-carousel> 
+      <app-carousel [relatedMovies]="relatedMovies" (changeMovie)="getMovieFromRelated($event)"></app-carousel> 
     </mat-card>
     
 </div>

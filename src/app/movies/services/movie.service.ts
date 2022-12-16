@@ -35,4 +35,8 @@ export class MovieService {
   public getTrailer(id: number): Observable<string>{
     return this.http.get<string>(`${environment.baseUrl}/trailer/${id}`)
   }
+
+  public getRelated(id: number): Observable<IPageOfMovies>{
+    return this.http.get<IPageOfMovies>(`${environment.baseUrl}/related/${id}`)
+  }
 }

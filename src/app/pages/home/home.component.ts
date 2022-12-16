@@ -26,12 +26,6 @@ export class HomeComponent implements OnInit {
         )[0]?.name)
       }
     })
-    // this.movieService.getMovies(1).subscribe({
-    //   next: res => {
-    //     this.movies = res.results
-    //     console.log(this.movies);
-    //   }
-    // })
   }
 
 }

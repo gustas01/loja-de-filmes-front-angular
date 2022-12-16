@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { IMovie } from 'src/app/models/imovie';
+import constants from 'src/app/utils/contansts';
 
 @Component({
   selector: 'app-carousel',
@@ -7,18 +10,27 @@ import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/n
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
-  images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
+  @Input() public relatedMovies!: IMovie[]
+  @Output() changeMovie = new EventEmitter<number>()
+
+  baseURLImagesW500: string = constants.baseURLImagesW400
   paused = false;
-	unpauseOnArrow = false;
-	pauseOnIndicator = false;
+  unpauseOnArrow = false;
+  pauseOnIndicator = false;
   pauseOnHover = true;
-	pauseOnFocus = true;
+  pauseOnFocus = true;
+
 
   @ViewChild('carousel', { static: true }) carousel!: NgbCarousel;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {console.log(this.relatedMovies);
+  }
+
+  movieDetails(id: number){
+    this.router.navigate(['/details', id])
+    this.changeMovie.emit(id)
   }
 
 

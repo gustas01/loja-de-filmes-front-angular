@@ -9,6 +9,8 @@
 }
 // html, body{ height: 100%;}
 body { font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #303030;}
-
+a{
+  cursor: pointer;
+}
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';

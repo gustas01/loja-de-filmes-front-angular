@@ -1,18 +1,18 @@
 <ngb-carousel
-    (slide)="onSlide($event)"
+  (slide)="onSlide($event)"
 	#carousel
 	[interval]="1000"
 	[pauseOnHover]="pauseOnHover"
 	[pauseOnFocus]="pauseOnFocus"
 	
 >
-	<ng-template ngbSlide *ngFor="let img of images; index as i">
+	<ng-template ngbSlide *ngFor="let movie of relatedMovies">
 		<div class="carousel-caption">
-			<h3>My slide {{i + 1}} title</h3>
+			<h3> {{movie.title}} </h3>
 		</div>
-		<a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
+		<a routerLinkActive="active" (click)="movieDetails(movie.id)">
 			<div class="picsum-img-wrapper">
-				<img [src]="img" alt="My image {{i + 1}} description" />
+				<img src="{{baseURLImagesW500}}/{{movie.poster_path}}" alt="" />
 			</div>
 		</a>
 	</ng-template>
