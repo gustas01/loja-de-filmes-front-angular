@@ -1,18 +1,17 @@
 <ngb-carousel
-  (slide)="onSlide($event)"
 	#carousel
-	[interval]="1000"
-	[pauseOnHover]="pauseOnHover"
-	[pauseOnFocus]="pauseOnFocus"
+	[interval]="3000"
+	[pauseOnHover]="true"
+	[pauseOnFocus]="true"
 	
 >
 	<ng-template ngbSlide *ngFor="let movie of relatedMovies">
-		<div class="carousel-caption">
+		<!-- <div class="carousel-caption"> -->
 			<h3> {{movie.title}} </h3>
-		</div>
-		<a routerLinkActive="active" (click)="movieDetails(movie.id)">
+		<!-- </div> -->
+		<a (click)="movieDetails(movie.id)">
 			<div class="picsum-img-wrapper">
-				<img src="{{baseURLImagesW500}}/{{movie.poster_path}}" alt="" />
+				<img src="{{baseURLImagesW400}}/{{movie.poster_path}}" alt="" />
 			</div>
 		</a>
 	</ng-template>

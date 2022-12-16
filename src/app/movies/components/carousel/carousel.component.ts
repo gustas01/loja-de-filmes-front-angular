@@ -13,19 +13,15 @@ export class CarouselComponent implements OnInit {
   @Input() public relatedMovies!: IMovie[]
   @Output() changeMovie = new EventEmitter<number>()
 
-  baseURLImagesW500: string = constants.baseURLImagesW400
+  baseURLImagesW400: string = constants.baseURLImagesW400
   paused = false;
-  unpauseOnArrow = false;
-  pauseOnIndicator = false;
-  pauseOnHover = true;
-  pauseOnFocus = true;
-
 
   @ViewChild('carousel', { static: true }) carousel!: NgbCarousel;
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {console.log(this.relatedMovies);
+  ngOnInit(): void {
+    this.relatedMovies = this.relatedMovies.filter(movie => movie.backdrop_path !== null)
   }
 
   movieDetails(id: number){
@@ -41,18 +37,5 @@ export class CarouselComponent implements OnInit {
 			this.carousel.pause();
 		}
 		this.paused = !this.paused;
-	}
-
-  onSlide(slideEvent: NgbSlideEvent) {
-		if (
-			this.unpauseOnArrow &&
-			slideEvent.paused &&
-			(slideEvent.source === NgbSlideEventSource.ARROW_LEFT || slideEvent.source === NgbSlideEventSource.ARROW_RIGHT)
-		) {
-			this.togglePaused();
-		}
-		if (this.pauseOnIndicator && !slideEvent.paused && slideEvent.source === NgbSlideEventSource.INDICATOR) {
-			this.togglePaused();
-		}
 	}
 }
