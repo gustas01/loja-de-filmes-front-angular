@@ -5,7 +5,7 @@
 
   <section class="details" *ngIf="movie">
    
-    <mat-card>
+    <mat-card class="slideInLeft">
       <img [src]="posterImage" alt="poster do filme">
       
       <mat-card-actions>
@@ -13,7 +13,7 @@
       </mat-card-actions>
     </mat-card>
 
-    <mat-card class="details__metadata">
+    <mat-card class="details__metadata slideInRight">
       <mat-card-title><h1>{{ movie.title }}</h1></mat-card-title>
 
       <mat-card-actions>
