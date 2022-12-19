@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
 import { IMovie } from 'src/app/models/imovie';
 import { MovieService } from 'src/app/movies/services/movie.service';
 import constants from 'src/app/utils/contansts';
@@ -10,19 +10,29 @@ import constants from 'src/app/utils/contansts';
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.scss']
 })
-export class MovieDetailsComponent implements OnInit {
+export class MovieDetailsComponent implements OnInit, OnDestroy {
   public movie!: IMovie
   public trailerURL!: string
   public backgroundMovie!: string
   public posterImage!: string
   public select: boolean = false;
   public relatedMovies!: IMovie[]
+  private subscription!: Subscription
 
   constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService) { }
+  
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
 
   ngOnInit(): void {    
-    const id = this.activatedRoute.snapshot.paramMap.get('id')
-    this.loadContent(Number(id))    
+    this.subscription = this.activatedRoute.params.subscribe({
+      next: res => {
+        const id = res['id']
+        this.loadContent(Number(id))   
+        window.scrollTo(0,0) 
+      }
+    })
   }
 
   loadContent(id: number){
@@ -50,12 +60,6 @@ export class MovieDetailsComponent implements OnInit {
       }
      })
   }
-
-  getMovieFromRelated(id: number){
-    this.loadContent(id)
-    window.scrollTo(0,0)
-  }
-
   
 
 }

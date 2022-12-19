@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 import { IMovie } from 'src/app/models/imovie';
 import constants from 'src/app/utils/contansts';
 
@@ -11,7 +11,6 @@ import constants from 'src/app/utils/contansts';
 })
 export class CarouselComponent implements OnInit {
   @Input() public relatedMovies!: IMovie[]
-  @Output() changeMovie = new EventEmitter<number>()
 
   baseURLImagesW400: string = constants.baseURLImagesW400
   paused = false;
@@ -24,10 +23,6 @@ export class CarouselComponent implements OnInit {
     this.relatedMovies = this.relatedMovies.filter(movie => movie.backdrop_path !== null)
   }
 
-  movieDetails(id: number){
-    this.router.navigate(['/details', id])
-    this.changeMovie.emit(id)
-  }
 
 
   togglePaused() {

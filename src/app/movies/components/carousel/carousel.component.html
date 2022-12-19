@@ -9,7 +9,7 @@
 		<!-- <div class="carousel-caption"> -->
 			<h3> {{movie.title}} </h3>
 		<!-- </div> -->
-		<a (click)="movieDetails(movie.id)">
+		<a [routerLink]="['/details', movie.id]">
 			<div class="picsum-img-wrapper">
 				<img src="{{baseURLImagesW400}}/{{movie.poster_path}}" alt="" />
 			</div>
