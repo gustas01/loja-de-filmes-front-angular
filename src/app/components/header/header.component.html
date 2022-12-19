@@ -22,7 +22,12 @@
   </i>
 
   <div class="header__buttons">
-    <p>Entrar</p>
+    <a routerLink="loginsignup">Entrar</a>
+    <!-- <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item>Atualizar dados</button>
+        <button mat-menu-item>Sair</button>
+      </mat-menu> -->
 
     <i class="material-icons" (click)="toggleFavoritesNav()">
       favorite
@@ -37,7 +42,12 @@
 
 <!-- essa toolbar só aparecerá em telas pequenas-->
 <mat-toolbar class="subHeader">
-    <span>Usuário</span>
+  <!-- <a routerLink="loginsignup">Entrar</a> -->
+  <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button mat-menu-item>Atualizar dados</button>
+      <button mat-menu-item>Sair</button>
+    </mat-menu>
 
     <i class="material-icons" (click)="toggleFavoritesNav()">
       favorite
