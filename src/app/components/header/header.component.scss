@@ -4,6 +4,11 @@
   position: sticky;
   top: 0;
   z-index: 5;
+  
+  a{
+    color: white;
+    display: contents;
+  }
 
   .header{
     display: flex;
@@ -20,11 +25,6 @@
       font-size: rem-calc(50);
     }
 
-    a{
-      color: white;
-      display: contents;
-    }
-    
     form{
       display: flex;
       justify-content: space-between;
@@ -94,6 +94,7 @@
     height: fit-content;
     display: flex;
     justify-content: space-between;
+    color: #fff;
     align-items: center;
     padding-bottom: 4px;
     i{
