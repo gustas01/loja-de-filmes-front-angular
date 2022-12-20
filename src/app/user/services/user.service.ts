@@ -21,7 +21,8 @@ export class UserService {
   login(user: any): Observable<{token: string}>{
     return this.http.post<{token: string}>(`${environment.baseUrl}/tokens`, user, this.headers).pipe(
       tap(res => {
-        //salvar token nos cookies
+        //salvando token nos cookies
+        document.cookie = `token = ${res.token}`
       }),
       catchError(err => {
         this.showMessage(err.error['errors'].join(), true)

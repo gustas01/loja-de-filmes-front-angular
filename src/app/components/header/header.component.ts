@@ -13,7 +13,23 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // if(this.getCookie('token'))
+     //pegar token
+    
+  }
+
+  getCookie(cookieName: string) {
+    let cookies: any = {};
+    
+    document.cookie.split(';').forEach(function(el) {
+      let [key,value] = el.split('=');
+      cookies[key.trim()] = value;
+    })
+    
+    return cookies[cookieName];
+    
+  }
 
   submitNameMovie(form: NgForm ){
     //implementar chamanda na API que busca filme por nome
