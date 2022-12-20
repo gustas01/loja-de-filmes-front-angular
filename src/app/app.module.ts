@@ -15,7 +15,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { UserModule } from './user/user.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [

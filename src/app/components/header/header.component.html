@@ -1,62 +1,60 @@
 <div class="sticky">
 
-<mat-toolbar class="header">
-  <a routerLink="/">
-    <i class="material-icons">
-      camera_roll
-    </i>
-  </a>
-
-  <span class="header__form">
-    <form #form="ngForm" (ngSubmit)="submitNameMovie(form)">
-      <input type="text" name="moviename" placeholder="Pesquisar filme..." ngModel>
-      <i class="material-icons" (click)="submitNameMovie(form)">
-        search
+  <mat-toolbar class="header">
+    <a routerLink="/">
+      <i class="material-icons">
+        camera_roll
       </i>
-    </form>
-  </span>
+    </a>
 
-  <i class="material-icons">
-    wb_sunny
-    <!-- brightness_3 -->
-  </i>
+      <form #form="ngForm" (ngSubmit)="submitNameMovie(form)">
+        <input type="text" name="moviename" placeholder="Pesquisar filme..." ngModel>
+        <i class="material-icons" (click)="submitNameMovie(form)">
+          search
+        </i>
+      </form>
 
-  <div class="header__buttons">
-    <a routerLink="loginsignup">Entrar</a>
-    <!-- <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+    <i class="material-icons">
+      wb_sunny
+      <!-- brightness_3 -->
+    </i>
+
+    <div class="header__buttons">
+      <a routerLink="loginsignup">Entrar</a>
+      <!-- <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+          <button mat-menu-item>Atualizar dados</button>
+          <button mat-menu-item>Sair</button>
+        </mat-menu> -->
+
+      <i class="material-icons" (click)="toggleFavoritesNav()">
+        favorite
+      </i>
+
+      <i class="material-icons" (click)="toggleShoppingCartNav()">
+        shopping_cart
+      </i>
+    </div>
+
+  </mat-toolbar>
+
+  <!-- essa toolbar só aparecerá em telas pequenas-->
+  <mat-toolbar class="subHeader">
+    <!-- <a routerLink="loginsignup">Entrar</a> -->
+    <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
         <button mat-menu-item>Atualizar dados</button>
         <button mat-menu-item>Sair</button>
-      </mat-menu> -->
+      </mat-menu>
 
-    <i class="material-icons" (click)="toggleFavoritesNav()">
-      favorite
-    </i>
+      <i class="material-icons" (click)="toggleFavoritesNav()">
+        favorite
+      </i>
 
-    <i class="material-icons" (click)="toggleShoppingCartNav()">
-      shopping_cart
-    </i>
-  </div>
-
-</mat-toolbar>
-
-<!-- essa toolbar só aparecerá em telas pequenas-->
-<mat-toolbar class="subHeader">
-  <!-- <a routerLink="loginsignup">Entrar</a> -->
-  <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
-    <mat-menu #beforeMenu="matMenu" xPosition="before">
-      <button mat-menu-item>Atualizar dados</button>
-      <button mat-menu-item>Sair</button>
-    </mat-menu>
-
-    <i class="material-icons" (click)="toggleFavoritesNav()">
-      favorite
-    </i>
-
-    <i class="material-icons" (click)="toggleShoppingCartNav()">
-      shopping_cart
-    </i>
-</mat-toolbar>
+      <i class="material-icons" (click)="toggleShoppingCartNav()">
+        shopping_cart
+      </i>
+  </mat-toolbar>
 </div>
 
 

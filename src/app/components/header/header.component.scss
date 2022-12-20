@@ -10,42 +10,42 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 2%;
+    height: fit-content;
 
     i{
       cursor: pointer;
     }
 
     i:first-child{
-      font-size: 50px;
+      font-size: rem-calc(50);
     }
 
     a{
       color: white;
       display: contents;
     }
-
-    &__form{
-      display: flex;
-      background-color: white;
-      width: rem-calc(500);
-      border-radius: 10px;
-      overflow: hidden;
-      color: #000;
-      margin: 0 10px;
-    }
-
+    
     form{
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 100%;
-
+      width: rem-calc(500);
+      border-radius: 10px;
+      padding-right: 2.5px;
+      border: 2px solid #424242;
+      
       input{
+        border-radius: 10px 0 0 10px;
         width: 100%;
         font-size: rem-calc(20);
-        padding: rem-calc(5);
+        padding: 2px 7px;
+        margin-right: 5px;
       }
-
+      
+    }
+    
+    form:focus-within{
+      border: 2px solid #303030;
     }
 
     &__buttons{

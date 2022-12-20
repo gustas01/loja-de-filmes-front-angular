@@ -9,7 +9,7 @@ import { MoviesModule } from '../movies.module';
 import { IGenres } from 'src/app/models/igenres';
 import { IMovie } from 'src/app/models/imovie';
 import { MatDialog } from '@angular/material/dialog';
-import { ErrorDialogComponent } from 'src/app/error-dialog/error-dialog.component';
+import { ErrorDialogComponent } from 'src/app/components/error-dialog/error-dialog.component';
 
 @Injectable({
   providedIn: MoviesModule
@@ -23,7 +23,7 @@ export class MovieService {
     .pipe(
       first(),
       catchError(error => {
-        this.onError('Não foi possível encontrar os filmes')
+        this.onError('Não foi possível encontrar os filmes...')
         return of()
       })
       )
