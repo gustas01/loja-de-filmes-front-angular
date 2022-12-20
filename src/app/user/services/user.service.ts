@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -19,12 +19,26 @@ export class UserService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
 
   login(user: any): Observable<{token: string}>{
-    return this.http.post<{token: string}>(`${environment.baseUrl}/tokens`, user, this.headers)
+    return this.http.post<{token: string}>(`${environment.baseUrl}/tokens`, user, this.headers).pipe(
+      tap(res => {
+        //salvar token nos cookies
+      }),
+      catchError(err => {
+        this.showMessage(err.error['errors'].join(), true)
+        return of()
+      })
+    )
   }
 
 
   signUp(user: any): Observable<any>{
-    return this.http.post<any>(`${environment.baseUrl}/users`, user, this.headers)
+    return this.http.post<any>(`${environment.baseUrl}/users`, user, this.headers).pipe(
+      tap(res => res),
+      catchError( err => {
+        this.showMessage(err.error['errors'].join(), true)
+        return of()
+      })
+    )
   }
 
   showMessage(msg: string, isError: boolean = false){

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -13,22 +14,16 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(8)]]
   })
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   login(){
     if(this.loginForm.valid){
       this.userService.login(this.loginForm.value).subscribe({
-        next: res => {
-          //salvar o token (res.token) nos cookies
-          console.log(res);
-          
-        }
+        next: res => this.router.navigate([''])
       })
-      
-    }
+    }else this.userService.showMessage('Preencha os campos corretamente', true)
   }
 
 }

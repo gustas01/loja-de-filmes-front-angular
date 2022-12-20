@@ -25,19 +25,12 @@ export class SignupComponent implements OnInit {
       this.userService.signUp(this.signUpForm.value).subscribe({
         next: res => {
           this.userService.login(this.signUpForm.value).subscribe({
-            next: res => {
-              //salvar token (res.token) nos cookies
-            }
+            next: res => this.router.navigate([''])
           })
-
           this.userService.showMessage(res.msg)
-          this.router.navigate([''])
         },
-        error: error => {
-          this.userService.showMessage(error.error['errors'].join(), true)
-        }
       })
-    }
+    }else this.userService.showMessage('Preencha os campos corretamente', true)
   }
   
 }
