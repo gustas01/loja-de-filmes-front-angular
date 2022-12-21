@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -9,15 +10,23 @@ import { NgForm } from '@angular/forms';
 export class HeaderComponent implements OnInit {
   public openFavorites: boolean = false
   public openShoppingCart: boolean = false
+  public token: string = ''
+  public user: string = ''
 
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    // if(this.getCookie('token'))
-     //pegar token
+    if(this.getCookie('token'))
+      this.token = this.getCookie('token')
     
-  }
+    this.userService.changeCookieEmitter.subscribe(
+      res => this.token = res.token
+    )
+
+    //console.log(this.token);
+    
+  } 
 
   getCookie(cookieName: string) {
     let cookies: any = {};

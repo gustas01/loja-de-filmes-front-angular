@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UserService {
+
+  public changeCookieEmitter = new EventEmitter<{token: string}>()
   
   private headers = {
     headers: new HttpHeaders({
@@ -23,6 +25,7 @@ export class UserService {
       tap(res => {
         //salvando token nos cookies
         document.cookie = `token = ${res.token}`
+        this.changeCookieEmitter.emit(res)
       }),
       catchError(err => {
         this.showMessage(err.error['errors'].join(), true)
