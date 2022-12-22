@@ -1,19 +1,22 @@
-import { createReducer, on } from "@ngrx/store";
-import { AddToCart, RemoveFromCart, ClearCart } from "../actions/shoppingCart.actions";
-import { IMovie } from "../models/imovie";
+import { isDevMode } from '@angular/core';
+import {
+  ActionReducer,
+  ActionReducerMap,
+  createFeatureSelector,
+  createSelector,
+  MetaReducer
+} from '@ngrx/store';
+import { favoritesReducer } from './favoritesReducer';
+import { shoppingCartReducer } from './shoppingCartReducer';
 
-export const initialstate: Array<IMovie> = []
+export interface State {
+
+}
+
+export const reducers: ActionReducerMap<State> = {
+    shoppingCart: shoppingCartReducer,
+    favorites: favoritesReducer
+};
 
 
-export const shoppingCartReducer = createReducer(
-    initialstate,
-    on(AddToCart, (state: Array<IMovie>, movie:IMovie) => {
-        const newState = [...state, movie]
-        //mandar o newState para salvar no banco atualizando o carrinho do usuário, ou seja, chamar o put do carrinho passando newState
-        return newState}),
-    on(RemoveFromCart, (state: Array<IMovie>, movie:IMovie) => {
-        let newState = [...state]
-        newState = newState.filter(el => el.id !== movie.id)
-        return newState
-    })
-)
+export const metaReducers: MetaReducer<State>[] = isDevMode() ? [] : [];

@@ -17,7 +17,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { StoreModule } from '@ngrx/store';
-import { shoppingCartReducer } from './reducers';
+
+import { reducers, metaReducers } from './reducers';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { shoppingCartReducer } from './reducers';
     MatDialogModule,
     MatButtonModule,
     MatMenuModule,
-    StoreModule.forRoot({shoppingCart: shoppingCartReducer})
+    StoreModule.forRoot(reducers, {metaReducers}),
   ],
   providers: [],
   bootstrap: [AppComponent]
