@@ -15,7 +15,7 @@ import constants from 'src/app/utils/contansts';
 })
 export class CardComponent implements OnInit, AfterViewInit  {
   shoppingCart$!: Observable<Array<IMovie>>
-  private shoppingCartArray: Array<IMovie> = []
+  private shoppingCartArray!: {shoppingCart: Array<IMovie>}
 
   @ViewChild('date') date!: ElementRef
   @Input() public movie!: IMovie
@@ -38,7 +38,7 @@ export class CardComponent implements OnInit, AfterViewInit  {
   ngOnInit(): void {
     this.shoppingCart$.subscribe({
       next: res => {
-        this.shoppingCartArray = res
+        this.shoppingCartArray = res as unknown as {shoppingCart: Array<IMovie>}
       }
     })
 
@@ -49,14 +49,14 @@ export class CardComponent implements OnInit, AfterViewInit  {
   }
 
   addToCart(){
-    // if(this.shoppingCartArray.indexOf(this.movie) === -1)
-      // this.store.dispatch(AddToCart(this.movie))
-    // else
-    //   this.store.dispatch(RemoveFromCart(this.movie))
-
-    // this.select = !this.select 
-    // console.log(this.shoppingCartArray[0]);
-    
+    if(this.shoppingCartArray.shoppingCart.filter(el => el.id === this.movie.id).length === 0){
+      this.store.dispatch(AddToCart(this.movie))
+      this.select = true 
+    }
+    else{
+      this.store.dispatch(RemoveFromCart(this.movie))
+      this.select = false      
+    }
   }
 
 }

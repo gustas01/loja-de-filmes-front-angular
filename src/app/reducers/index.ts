@@ -13,7 +13,7 @@ export const shoppingCartReducer = createReducer(
         return newState}),
     on(RemoveFromCart, (state: Array<IMovie>, movie:IMovie) => {
         let newState = [...state]
-        newState = newState.splice(state.indexOf(movie), 1)
+        newState = newState.filter(el => el.id !== movie.id)
         return newState
     })
 )
