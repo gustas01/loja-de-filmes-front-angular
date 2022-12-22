@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ITokenPayload } from 'src/app/models/i-token-payload';
 import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
@@ -11,38 +12,46 @@ export class HeaderComponent implements OnInit {
   public openFavorites: boolean = false
   public openShoppingCart: boolean = false
   public token: string = ''
-  public user: string = ''
+  public user!: ITokenPayload
 
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    if(this.getCookie('token'))
-      this.token = this.getCookie('token')
+    if(this.userService.getCookie('token')){
+      this.token = this.userService.getCookie('token')
+      
+      if(this.userService.verifyExpiredToken(this.token))
+        this.userService.logout()
+
+       this.user = this.userService.decodeToken(this.token)
+    }
     
     this.userService.changeCookieEmitter.subscribe(
-      res => this.token = res.token
+      res => {
+        if(res.token){
+          this.token = res.token
+          
+          if(this.userService.verifyExpiredToken(this.token))
+            this.userService.logout()
+          
+            this.user = this.userService.decodeToken(this.token)
+        }else{
+          this.token = ''
+        }
+      }
     )
-
-    //console.log(this.token);
-    
   } 
 
-  getCookie(cookieName: string) {
-    let cookies: any = {};
-    
-    document.cookie.split(';').forEach(function(el) {
-      let [key,value] = el.split('=');
-      cookies[key.trim()] = value;
-    })
-    
-    return cookies[cookieName];
-    
-  }
+  
 
   submitNameMovie(form: NgForm ){
     //implementar chamanda na API que busca filme por nome
     // console.log(form.value.moviename);
+  }
+
+  logout(){
+    this.userService.logout()
   }
 
   toggleFavoritesNav(){

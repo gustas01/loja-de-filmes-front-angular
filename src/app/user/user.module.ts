@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { UserRoutingModule } from './user-routing.module';
 import { LoginComponent } from './components/login/login.component';
@@ -39,7 +39,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     MatCardModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule
   ],
   exports: [FavoritesComponent, ShoppingCartComponent, LoginComponent, SignupComponent]
 })
