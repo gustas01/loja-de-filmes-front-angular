@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable} from 'rxjs'
+import { IMovie } from 'src/app/models/imovie';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -6,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
+  shoppingCart$!: Observable<Array<IMovie>>
 
-  constructor() { }
+  constructor(private store: Store<Array<IMovie>>) {
+    this.shoppingCart$ = store.select((shoppingCart: Array<IMovie>) => shoppingCart)
+   }
 
   ngOnInit(): void {
+    this.shoppingCart$.subscribe({
+      next: res => {
+        console.log(res)
+        
+      }
+    })
   }
 
 }

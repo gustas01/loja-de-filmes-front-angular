@@ -16,6 +16,8 @@ import { UserModule } from './user/user.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { StoreModule } from '@ngrx/store';
+import { shoppingCartReducer } from './reducers';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
     NgbModule,
     MatDialogModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    StoreModule.forRoot({shoppingCart: shoppingCartReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]
