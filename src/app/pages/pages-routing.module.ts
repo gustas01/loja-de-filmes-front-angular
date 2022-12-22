@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 import { CheckoutComponent } from './checkout/checkout.component';
 
 //components
@@ -23,7 +24,8 @@ const routes: Routes = [
   {
     path: 'loginsignup',
     component: LoginSignupComponent,
-    title: 'Login - Criar conta'
+    title: 'Login - Criar conta',
+    canActivate: [AuthGuard]
   },
   {
     path: 'details/:id',
