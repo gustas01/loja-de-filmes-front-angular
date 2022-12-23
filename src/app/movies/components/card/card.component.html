@@ -8,11 +8,11 @@
       <span class="movieStars">{{ movie.vote_average.toFixed(2)}} <i class="material-icons">star</i></span>
     </mat-card-content>
     <mat-card-actions class="actions">
-      <button mat-raised-button color="warn" (click)="addToCart()" (click)="$event.stopPropagation()" [ngClass]="{'selected': select}">
-        <i class="material-icons" *ngIf="select">check</i>
+      <button mat-raised-button color="warn" (click)="addOrRemoveFromCart($event)" [ngClass]="{'inCart': inCart}">
+        <i class="material-icons" *ngIf="inCart">check</i>
         Carrinho<i class="material-icons">add_shopping_cart</i>
       </button>
-      <button mat-button (click)="$event.stopPropagation()"><i class="material-icons">favorite</i></button>
+      <button mat-button (click)="addOrRemoveFromFavorites($event)"><i class="material-icons" [ngClass]="{'inFavorites': inFavorites}">favorite</i></button>
     </mat-card-actions>
   </span>
 </mat-card>
