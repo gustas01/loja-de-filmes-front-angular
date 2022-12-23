@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { LoadOnLogin } from 'src/app/store/actions/shoppingCart.actions';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -16,14 +18,17 @@ export class LoginComponent implements OnInit {
     rememberMe: [false]
   })
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private store: Store) { }
 
   ngOnInit(): void { }
 
-  login(){
+  handleLogin(){
     if(this.loginForm.valid){
       this.userService.login(this.loginForm.value).subscribe({
-        next: res => this.router.navigate([''])
+        next: () => {
+          this.store.dispatch(LoadOnLogin())
+          return this.router.navigate([''])}
+
       })
     }else this.userService.showMessage('Preencha os campos corretamente', true)
   }

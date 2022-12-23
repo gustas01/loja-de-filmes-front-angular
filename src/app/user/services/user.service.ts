@@ -7,6 +7,9 @@ import { environment } from 'src/environments/environment';
 import jwt_decode from "jwt-decode";
 import { Router } from '@angular/router';
 import { ITokenPayload } from 'src/app/models/i-token-payload';
+import { IMovie } from 'src/app/models/imovie';
+import { ClearCart } from 'src/app/store/actions/shoppingCart.actions';
+import { Store } from '@ngrx/store';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +25,8 @@ export class UserService {
     })
   }
 
-  constructor(private http: HttpClient, private snackBar: MatSnackBar, private router: Router) { }
+
+  constructor(private http: HttpClient, private snackBar: MatSnackBar, private router: Router, private store: Store) { }
 
   login(user: any): Observable<{token: string}>{
     return this.http.post<{token: string}>(`${environment.baseUrl}/tokens`, user, this.headers).pipe(
@@ -57,6 +61,7 @@ export class UserService {
   logout(){
     document.cookie = 'token=;Expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;'
     this.changeCookieEmitter.emit({token: ''})
+    this.store.dispatch(ClearCart())
     this.router.navigate([''])
   }
 
@@ -69,7 +74,7 @@ export class UserService {
      })
   }
 
-  getCookie(cookieName: string) {
+  getCookie(cookieName: string): string {
     let cookies: any = {};
     
     document.cookie.split(';').forEach(function(el) {
@@ -91,5 +96,17 @@ export class UserService {
       return true
 
     return false
+  }
+
+  getShoppingCart(): Observable<IMovie[]>{
+    const headers = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": `Bearer ${this.getCookie('token')}`,
+      })
+    }
+    
+    return this.http.get<IMovie[]>(`${environment.baseUrl}/shoppingCart`, headers)
   }
 }

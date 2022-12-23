@@ -19,6 +19,8 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
 import { StoreModule } from '@ngrx/store';
 
 import { reducers, metaReducers } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { reducers, metaReducers } from './store/reducers';
     MatButtonModule,
     MatMenuModule,
     StoreModule.forRoot(reducers, {metaReducers}),
+    EffectsModule.forRoot([AppEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]
