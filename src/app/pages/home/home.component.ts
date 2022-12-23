@@ -9,7 +9,7 @@ import { MovieService } from 'src/app/movies/services/movie.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public movies: Array<IMovie> = []
+  public movies: IMovie[] = []
 
   constructor(private movieService: MovieService) { }
 

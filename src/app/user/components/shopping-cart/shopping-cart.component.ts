@@ -9,10 +9,10 @@ import { IMovie } from 'src/app/models/imovie';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-  shoppingCart$!: Observable<Array<IMovie>>
+  shoppingCart$!: Observable<IMovie[]>
 
-  constructor(private store: Store<Array<IMovie>>) {
-    this.shoppingCart$ = store.select((shoppingCart: Array<IMovie>) => shoppingCart)
+  constructor(private store: Store<IMovie[]>) {
+    this.shoppingCart$ = store.select((shoppingCart: IMovie[]) => shoppingCart)
    }
 
   ngOnInit(): void {
