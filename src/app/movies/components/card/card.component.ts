@@ -2,8 +2,8 @@ import { Component, OnInit, Input, ViewChild, AfterViewInit, ElementRef } from '
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable} from 'rxjs'
-import { AddToFavorites, RemoveFromFavorites } from 'src/app/actions/favorites.actions';
-import { AddToCart, RemoveFromCart } from 'src/app/actions/shoppingCart.actions';
+import { AddToFavorites, RemoveFromFavorites } from 'src/app/store/actions/favorites.actions';
+import { AddToCart, RemoveFromCart } from 'src/app/store/actions/shoppingCart.actions';
 
 import { IMovie } from 'src/app/models/imovie';
 import { IState } from 'src/app/models/istate';

@@ -18,7 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { StoreModule } from '@ngrx/store';
 
-import { reducers, metaReducers } from './reducers';
+import { reducers, metaReducers } from './store/reducers';
 
 @NgModule({
   declarations: [
