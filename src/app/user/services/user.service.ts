@@ -109,4 +109,16 @@ export class UserService {
     
     return this.http.get<IMovie[]>(`${environment.baseUrl}/shoppingCart`, headers)
   }
+
+  getFavorites(): Observable<IMovie[]>{
+    const headers = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": `Bearer ${this.getCookie('token')}`,
+      })
+    }
+    
+    return this.http.get<IMovie[]>(`${environment.baseUrl}/favorites`, headers)
+  }
 }

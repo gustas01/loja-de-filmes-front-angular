@@ -9,7 +9,6 @@ export const shoppingCartReducer = createReducer(
     initialstate,
     on(AddToCart, (state: IMovie[], movie:IMovie) => {
         const newState = [...state, movie]
-        //mandar o newState para salvar no banco atualizando o carrinho do usuário, ou seja, chamar o put do carrinho passando newState
         return newState}),
     on(RemoveFromCart, (state: IMovie[], movie:IMovie) => {
         let newState = [...state]

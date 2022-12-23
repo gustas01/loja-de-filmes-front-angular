@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { LoadOnLogin } from 'src/app/store/actions/shoppingCart.actions';
+import { LoadFavoritesOnLogin } from 'src/app/store/actions/favorites.actions';
+import { LoadShoppingCartOnLogin } from 'src/app/store/actions/shoppingCart.actions';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -26,7 +27,9 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
       this.userService.login(this.loginForm.value).subscribe({
         next: () => {
-          this.store.dispatch(LoadOnLogin())
+          this.store.dispatch(LoadShoppingCartOnLogin())
+          this.store.dispatch(LoadFavoritesOnLogin())
+
           return this.router.navigate([''])}
 
       })

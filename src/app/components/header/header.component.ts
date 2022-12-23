@@ -1,8 +1,10 @@
-import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
+
 import { ITokenPayload } from 'src/app/models/i-token-payload';
-import { LoadOnLogin } from 'src/app/store/actions/shoppingCart.actions';
+import { LoadFavoritesOnLogin } from 'src/app/store/actions/favorites.actions';
+import { LoadShoppingCartOnLogin } from 'src/app/store/actions/shoppingCart.actions';
 import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
@@ -22,7 +24,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     if(this.userService.getCookie('token')){
       this.token = this.userService.getCookie('token')
-      this.store.dispatch(LoadOnLogin())
+      this.store.dispatch(LoadShoppingCartOnLogin())
+      this.store.dispatch(LoadFavoritesOnLogin())
       
       if(this.userService.verifyExpiredToken(this.token))
         this.userService.logout()

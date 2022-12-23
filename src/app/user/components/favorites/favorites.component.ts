@@ -1,4 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { IMovie } from 'src/app/models/imovie';
+import { IState } from 'src/app/models/istate';
 
 @Component({
   selector: 'app-favorites',
@@ -6,9 +10,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
-  constructor() { }
+  favorites$!: Observable<IMovie[]>
 
-  ngOnInit(): void {
-  }
+  constructor(private store: Store<IState>) {
+    this.favorites$ = store.select((state: IState) => state.favorites)
+   }
 
+  ngOnInit(): void { }
+   //fazer *ngFor="let movie of movies$ | async"> quando for montar/renderizar os favorites
 }
