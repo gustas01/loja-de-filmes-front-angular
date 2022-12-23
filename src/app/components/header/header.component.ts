@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { ITokenPayload } from 'src/app/models/i-token-payload';
-import { LoadFavoritesOnLogin } from 'src/app/store/actions/favorites.actions';
-import { LoadShoppingCartOnLogin } from 'src/app/store/actions/shoppingCart.actions';
+import { IMovie } from 'src/app/models/imovie';
+import { IState } from 'src/app/models/istate';
 import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
@@ -18,19 +19,31 @@ export class HeaderComponent implements OnInit {
   public token: string = ''
   public user!: ITokenPayload
 
+  private shoppingCart$!: Observable<IMovie[]>
+  private favorites$!: Observable<IMovie[]>
 
-  constructor(private userService: UserService, private store: Store) { }
+
+  constructor(private userService: UserService, private store: Store<IState>) {
+    this.shoppingCart$ = store.select((state: IState) => state.shoppingCart)
+    this.favorites$ = store.select((state: IState) => state.favorites)
+   }
 
   ngOnInit(): void {
     if(this.userService.getCookie('token')){
       this.token = this.userService.getCookie('token')
-      this.store.dispatch(LoadShoppingCartOnLogin())
-      this.store.dispatch(LoadFavoritesOnLogin())
-      
-      if(this.userService.verifyExpiredToken(this.token))
-        this.userService.logout()
-
        this.user = this.userService.decodeToken(this.token)
+
+       this.shoppingCart$.subscribe({
+        next: res => {
+          //aqui vou pegar o res.length pra usar no ícone de notificação do carrinho
+          console.log(res)}
+       })
+
+       this.favorites$.subscribe({
+        next: res => {
+          //aqui vou pegar o res.length pra usar no ícone de notificação dos favoritos
+          console.log(res)}
+       })
     }
     
     this.userService.changeCookieEmitter.subscribe(
@@ -38,10 +51,7 @@ export class HeaderComponent implements OnInit {
         if(res.token){
           this.token = res.token
           
-          if(this.userService.verifyExpiredToken(this.token))
-            this.userService.logout()
-          
-            this.user = this.userService.decodeToken(this.token)
+          this.user = this.userService.decodeToken(this.token)
         }else{
           this.token = ''
         }

@@ -10,6 +10,7 @@ import { ITokenPayload } from 'src/app/models/i-token-payload';
 import { IMovie } from 'src/app/models/imovie';
 import { ClearCart } from 'src/app/store/actions/shoppingCart.actions';
 import { Store } from '@ngrx/store';
+import { ClearFavorites } from 'src/app/store/actions/favorites.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -62,6 +63,7 @@ export class UserService {
     document.cookie = 'token=;Expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;'
     this.changeCookieEmitter.emit({token: ''})
     this.store.dispatch(ClearCart())
+    this.store.dispatch(ClearFavorites())
     this.router.navigate([''])
   }
 
@@ -106,7 +108,7 @@ export class UserService {
         "Authorization": `Bearer ${this.getCookie('token')}`,
       })
     }
-    
+
     return this.http.get<IMovie[]>(`${environment.baseUrl}/shoppingCart`, headers)
   }
 

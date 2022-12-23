@@ -6,4 +6,4 @@ export const RemoveFromFavorites = createAction('RemoveFromFavorites', props<IMo
 export const ClearFavorites = createAction('ClearFavorites')
 export const LoadFavorites = createAction('LoadFavorites', props<{favorites: IMovie[]}>())
 
-export const LoadFavoritesOnLogin = createAction('[Load Content] Load favorites')
+export const TriggerLoadFavorites = createAction('[Load Content] Load favorites')
