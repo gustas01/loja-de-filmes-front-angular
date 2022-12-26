@@ -13,6 +13,10 @@ export class HomeComponent implements OnInit {
 
   constructor(private movieService: MovieService) { }
 
+  trackMovie(index: number, movie: IMovie) {
+    return movie ? movie.id : null;
+  }
+
   ngOnInit(): void {
     const getMovies = this.movieService.getMovies()
     const getGenres = this.movieService.getGenres()

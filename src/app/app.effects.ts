@@ -9,7 +9,7 @@ import { UserService } from './user/services/user.service';
 
 @Injectable()
 export class AppEffects {
-  constructor(private actions$: Actions, private userService: UserService, private store: Store) {}
+  constructor(private actions$: Actions, private userService: UserService) {}
 
   loadShoppingCart$ = createEffect(() => this.actions$.pipe(
     ofType('[Load Content] Load shoppingCart'),

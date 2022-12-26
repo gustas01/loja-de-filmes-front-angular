@@ -1,16 +1,17 @@
 import { createReducer, on } from "@ngrx/store";
 import { AddToCart, RemoveFromCart, ClearCart, LoadShoppingCart } from "../actions/shoppingCart.actions";
 import { IMovie } from "../../models/imovie";
+import { ImovieFormatDatabase } from "src/app/models/imovie-format-database";
 
-export const initialstate: IMovie[] = []
+export const initialstate: ImovieFormatDatabase[] = []
 
 
 export const shoppingCartReducer = createReducer(
     initialstate,
-    on(AddToCart, (state: IMovie[], movie:IMovie) => {
+    on(AddToCart, (state: ImovieFormatDatabase[], movie:ImovieFormatDatabase) => {
         const newState = [...state, movie]
         return newState}),
-    on(RemoveFromCart, (state: IMovie[], movie:IMovie) => {
+    on(RemoveFromCart, (state: ImovieFormatDatabase[], movie:ImovieFormatDatabase) => {
         let newState = [...state]
         newState = newState.filter(el => el.id !== movie.id)
         return newState
@@ -18,7 +19,7 @@ export const shoppingCartReducer = createReducer(
     on(ClearCart, () => {
         return []
     }),
-    on(LoadShoppingCart, (state: IMovie[], { shoppingCart }) => {
+    on(LoadShoppingCart, (state: ImovieFormatDatabase[], { shoppingCart }) => {
         return shoppingCart
     })
 )

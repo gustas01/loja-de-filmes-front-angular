@@ -11,6 +11,7 @@ import { IMovie } from 'src/app/models/imovie';
 import { ClearCart } from 'src/app/store/actions/shoppingCart.actions';
 import { Store } from '@ngrx/store';
 import { ClearFavorites } from 'src/app/store/actions/favorites.actions';
+import { ImovieFormatDatabase } from 'src/app/models/imovie-format-database';
 
 @Injectable({
   providedIn: 'root'
@@ -100,7 +101,7 @@ export class UserService {
     return false
   }
 
-  getShoppingCart(): Observable<IMovie[]>{
+  getShoppingCart(): Observable<ImovieFormatDatabase[]>{
     const headers = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
@@ -109,10 +110,10 @@ export class UserService {
       })
     }
 
-    return this.http.get<IMovie[]>(`${environment.baseUrl}/shoppingCart`, headers)
+    return this.http.get<ImovieFormatDatabase[]>(`${environment.baseUrl}/shoppingCart`, headers)
   }
 
-  getFavorites(): Observable<IMovie[]>{
+  getFavorites(): Observable<ImovieFormatDatabase[]>{
     const headers = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
@@ -121,6 +122,31 @@ export class UserService {
       })
     }
     
-    return this.http.get<IMovie[]>(`${environment.baseUrl}/favorites`, headers)
+    return this.http.get<ImovieFormatDatabase[]>(`${environment.baseUrl}/favorites`, headers)
+  }
+
+  setShoppingCart(shoppingCart: ImovieFormatDatabase[]){
+    const headers = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": `Bearer ${this.getCookie('token')}`,
+      })
+    }
+
+    return this.http.put(`${environment.baseUrl}/shoppingCart`, shoppingCart, headers)
+  }
+
+
+  setFavorites(favorites: ImovieFormatDatabase[]){
+    const headers = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": `Bearer ${this.getCookie('token')}`,
+      })
+    }
+
+    return this.http.put(`${environment.baseUrl}/favorites`, favorites, headers)
   }
 }

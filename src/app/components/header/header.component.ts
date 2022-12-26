@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { ITokenPayload } from 'src/app/models/i-token-payload';
-import { IMovie } from 'src/app/models/imovie';
+import { ImovieFormatDatabase } from 'src/app/models/imovie-format-database';
 import { IState } from 'src/app/models/istate';
 import { UserService } from 'src/app/user/services/user.service';
 
@@ -19,8 +19,8 @@ export class HeaderComponent implements OnInit {
   public token: string = ''
   public user!: ITokenPayload
 
-  private shoppingCart$!: Observable<IMovie[]>
-  private favorites$!: Observable<IMovie[]>
+  private shoppingCart$!: Observable<ImovieFormatDatabase[]>
+  private favorites$!: Observable<ImovieFormatDatabase[]>
 
 
   constructor(private userService: UserService, private store: Store<IState>) {

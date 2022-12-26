@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable} from 'rxjs'
-import { IMovie } from 'src/app/models/imovie';
+import { ImovieFormatDatabase } from 'src/app/models/imovie-format-database';
 import { IState } from 'src/app/models/istate';
 
 @Component({
@@ -10,7 +10,7 @@ import { IState } from 'src/app/models/istate';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-  shoppingCart$!: Observable<IMovie[]>
+  shoppingCart$!: Observable<ImovieFormatDatabase[]>
 
   constructor(private store: Store<IState>) {
     this.shoppingCart$ = store.select((state: IState) => state.shoppingCart)

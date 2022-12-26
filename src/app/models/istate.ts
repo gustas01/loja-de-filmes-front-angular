@@ -1,7 +1,7 @@
-import { IMovie } from "./imovie";
+import { ImovieFormatDatabase } from "./imovie-format-database";
 
 export interface IState {
-    shoppingCart: IMovie[],
-    favorites: IMovie[],
+    shoppingCart: ImovieFormatDatabase[],
+    favorites: ImovieFormatDatabase[],
     movieNameSearch: string,
 }
