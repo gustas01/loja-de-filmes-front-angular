@@ -17,10 +17,10 @@
       <mat-card-title><h1>{{ movie.title }}</h1></mat-card-title>
 
       <mat-card-actions>
-        <button mat-raised-button color="warn" (click)="select = !select" [ngClass]="{'selected': select}">
-          <i class="material-icons" *ngIf="select">check</i>Carrinho<i class="material-icons">add_shopping_cart</i>
+        <button mat-raised-button color="warn" (click)="addOrRemoveFromCart()" [ngClass]="{'selected': inCart}">
+          <i class="material-icons" *ngIf="inCart">check</i>Carrinho<i class="material-icons">add_shopping_cart</i>
         </button>
-        <button mat-button><i class="material-icons">favorite</i></button>
+        <button mat-button (click)="addOrRemoveFromFavorites()" [ngClass]="{'inFavorites': inFavorites}"><i class="material-icons">favorite</i></button>
       </mat-card-actions>
 
       <mat-card-content>

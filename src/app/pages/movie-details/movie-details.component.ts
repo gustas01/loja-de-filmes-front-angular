@@ -1,8 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { forkJoin, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { forkJoin, Observable, Subscription } from 'rxjs';
 import { IMovie } from 'src/app/models/imovie';
+import { ImovieFormatDatabase } from 'src/app/models/imovie-format-database';
+import { IState } from 'src/app/models/istate';
 import { MovieService } from 'src/app/movies/services/movie.service';
+import { AddToFavorites, RemoveFromFavorites } from 'src/app/store/actions/favorites.actions';
+import { AddToCart, RemoveFromCart } from 'src/app/store/actions/shoppingCart.actions';
+import { UserService } from 'src/app/user/services/user.service';
 import constants from 'src/app/utils/contansts';
 
 @Component({
@@ -15,11 +21,19 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   public trailerURL!: string
   public backgroundMovie!: string
   public posterImage!: string
-  public select: boolean = false;
+  public inCart: boolean = false;
+  public inFavorites: boolean = false;
   public relatedMovies!: IMovie[]
   private subscription!: Subscription
+  shoppingCart$!: Observable<ImovieFormatDatabase[]>
+  private shoppingCartArray!: ImovieFormatDatabase[]
+  favorites$!: Observable<ImovieFormatDatabase[]>
+  private favoritesArray!: ImovieFormatDatabase[]
 
-  constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService) { }
+  constructor(private activatedRoute: ActivatedRoute, private movieService: MovieService, private store: Store<IState>, private userService: UserService) {
+    this.favorites$ = store.select((state: IState) => state.favorites)
+    this.shoppingCart$ = store.select((state: IState) => state.shoppingCart)
+   }
   
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
@@ -33,6 +47,17 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
         window.scrollTo(0,0) 
       }
     })
+
+    
+    this.shoppingCart$.subscribe({
+      next: res => {
+        this.shoppingCartArray = res 
+      }})
+
+    this.favorites$.subscribe({
+      next: res => {
+        this.favoritesArray = res
+      }})
   }
 
   loadContent(id: number){
@@ -46,6 +71,13 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
         this.backgroundMovie = 'url("' + constants.baseURLImagesOriginal + (this.movie.backdrop_path)?.toString() + '")'
         this.posterImage = constants.baseURLImagesW400 + this.movie.poster_path
         this.movie.mainGenre = this.movie.genres[0].name;
+
+
+        //se o filme já estiver no carrinho, inCart = true, e o botão já inicia com o estilo
+        this.shoppingCartArray.filter(movie => {movie.id === this.movie.id ? this.inCart = true : this.inCart = false})
+        
+        //se o filme já estiver nos favoritos, inFavorites = true, e o coração já inicia vermelho
+        this.favoritesArray.filter(movie => {movie.id === this.movie.id ? this.inFavorites = true: this.inFavorites = false})
         
       },
       error: err => {
@@ -62,4 +94,41 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   }
   
 
+  addOrRemoveFromCart(){
+    const filterMovieData = {
+      id: this.movie.id,
+      poster_path: this.movie.poster_path,
+      title: this.movie.title
+    }
+
+    if(this.shoppingCartArray.filter(el => el.id === this.movie.id).length === 0){
+      this.store.dispatch(AddToCart(filterMovieData))  
+      this.inCart = true 
+    }
+    else{
+      this.store.dispatch(RemoveFromCart({id: filterMovieData.id}))
+      this.inCart = false      
+    }
+
+    this.userService.setShoppingCart([...this.shoppingCartArray]).subscribe();
+  }
+
+
+  addOrRemoveFromFavorites(){
+    const filterMovieData = {
+      id: this.movie.id,
+      poster_path: this.movie.poster_path,
+      title: this.movie.title
+    }
+
+    if(this.favoritesArray.filter(el => el.id === this.movie.id).length === 0){
+      this.store.dispatch(AddToFavorites(filterMovieData))
+      this.inFavorites = true 
+    }
+    else{
+      this.store.dispatch(RemoveFromFavorites({id: filterMovieData.id}))
+      this.inFavorites = false      
+    }
+    this.userService.setFavorites([...this.favoritesArray]).subscribe();
+  }
 }

@@ -57,6 +57,14 @@
     .mat-card-actions, .mat-card-footer{
       margin-bottom: 0;
       width: 100%;
+
+      .inFavorites{
+        color: red;
+    
+        &:hover{
+          color: rgb(252, 80, 80);
+        }
+      }
     }
     
     .mat-card-content{
