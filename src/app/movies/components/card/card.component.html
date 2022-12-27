@@ -1,6 +1,7 @@
 <mat-card (click)="movieDetails()">
   <mat-card-title>{{ movie.title }}</mat-card-title>
-  <img mat-card-image src='{{urlMoviePoster}}/{{movie.poster_path}}' alt="Movie's Poster">
+  <img *ngIf="movie.poster_path" mat-card-image src='{{urlMoviePoster}}/{{movie.poster_path}}' alt="Movie's Poster">
+  <img *ngIf="!movie.poster_path" src='../../../../assets/wallpaper_not_found.png' alt="Movie's poster"/>
   <span>
     <mat-card-content class="content">
       <span #date></span>

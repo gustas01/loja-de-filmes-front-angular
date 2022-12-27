@@ -49,6 +49,10 @@ export class MovieService {
     return this.http.get<IPageOfMovies>(`${environment.baseUrl}/related/${id}`)
   }
 
+  public getSearchedMovie(movieName: string): Observable<IPageOfMovies>{
+    return this.http.get<IPageOfMovies>(`${environment.baseUrl}/search/${movieName}/1`)
+  }
+
   private onError(errorMsg: string){
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg

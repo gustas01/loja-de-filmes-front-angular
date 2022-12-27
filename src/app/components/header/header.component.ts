@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { ITokenPayload } from 'src/app/models/i-token-payload';
 import { ImovieFormatDatabase } from 'src/app/models/imovie-format-database';
 import { IState } from 'src/app/models/istate';
+import { SearchService } from 'src/app/services/search.service';
 import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class HeaderComponent implements OnInit {
   private favorites$!: Observable<ImovieFormatDatabase[]>
 
 
-  constructor(private userService: UserService, private store: Store<IState>) {
+  constructor(private userService: UserService, private searchService: SearchService, private store: Store<IState>) {
     this.shoppingCart$ = store.select((state: IState) => state.shoppingCart)
     this.favorites$ = store.select((state: IState) => state.favorites)
    }
@@ -64,6 +65,7 @@ export class HeaderComponent implements OnInit {
   submitNameMovie(form: NgForm ){
     //implementar chamanda na API que busca filme por nome
     // console.log(form.value.moviename);
+    this.searchService.search(form.value.moviename)
   }
 
   logout(){
