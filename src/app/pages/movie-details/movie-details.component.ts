@@ -74,10 +74,10 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
 
 
         //se o filme já estiver no carrinho, inCart = true, e o botão já inicia com o estilo
-        this.shoppingCartArray.filter(movie => {movie.id === this.movie.id ? this.inCart = true : this.inCart = false})
+        this.shoppingCartArray.filter(movie => {movie.id === this.movie.id ? this.inCart = true : this.inCart})
         
         //se o filme já estiver nos favoritos, inFavorites = true, e o coração já inicia vermelho
-        this.favoritesArray.filter(movie => {movie.id === this.movie.id ? this.inFavorites = true: this.inFavorites = false})
+        this.favoritesArray.filter(movie => {movie.id === this.movie.id ? this.inFavorites = true: this.inFavorites})
         
       },
       error: err => {

@@ -40,13 +40,13 @@ export class CardComponent implements OnInit, AfterViewInit  {
     this.shoppingCart$.subscribe({
       next: res => {
         this.shoppingCartArray = res
-        this.shoppingCartArray.filter(movie => {movie.id === this.movie.id ? this.inCart = true : this.inCart = false})
+        this.shoppingCartArray.filter(movie => {movie.id === this.movie.id ? this.inCart = true : this.inCart})
       }})
 
     this.favorites$.subscribe({
       next: res => {
         this.favoritesArray = res
-        this.favoritesArray.filter(movie => {movie.id === this.movie.id ? this.inFavorites = true: this.inFavorites = false})
+        this.favoritesArray.filter(movie => {movie.id === this.movie.id ? this.inFavorites = true: this.inFavorites})
       }})
   }
 
