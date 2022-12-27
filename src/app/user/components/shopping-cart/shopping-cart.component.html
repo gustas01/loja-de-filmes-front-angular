@@ -2,8 +2,10 @@
   <h2>Carrinho de compras</h2>
 
   <ul>
-    <li>
-      <!-- aqui fazer ngFor do array do carrinho de compras vindos do redux -->
+    <li *ngFor="let movie of shoppingCart$ | async" [title]="movie.title">
+      <img [src]="baseUrl+movie.poster_path" alt="poster do filme">
+     <span> {{movie.title}}</span>
+      <i class="material-icons">delete</i>
     </li>
   </ul>
 </nav>
