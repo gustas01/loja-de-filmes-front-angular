@@ -3,7 +3,37 @@
 :host{
   nav{
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: rem-calc(10);
+    max-width: 30rem;
+
+    ul{
+      list-style: none;
+      width: 100%;
+      padding: 0 16px;
+
+      li{
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+        white-space: nowrap;
+
+        img{
+          border-radius: 4px;
+        }
+
+        span{
+          width: 100%;
+          margin: 0 1rem;
+          overflow: hidden;
+        }
+
+        i{
+          cursor: pointer;
+        }
+      }
+    }
   }
 }

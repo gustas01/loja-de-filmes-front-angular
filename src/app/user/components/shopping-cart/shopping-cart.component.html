@@ -4,7 +4,7 @@
   <ul>
     <li *ngFor="let movie of shoppingCart$ | async" [title]="movie.title">
       <img [src]="baseUrl+movie.poster_path" alt="poster do filme">
-     <span> {{movie.title}}</span>
+      <span> {{movie.title}}</span>
       <i class="material-icons">delete</i>
     </li>
   </ul>

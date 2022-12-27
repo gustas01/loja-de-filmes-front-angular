@@ -19,5 +19,4 @@ export class ShoppingCartComponent implements OnInit {
    }
 
   ngOnInit(): void { }
-  //fazer *ngFor="let movie of shoppingCart$ | async"> quando for montar/renderizar o shoppingCart no html
 }

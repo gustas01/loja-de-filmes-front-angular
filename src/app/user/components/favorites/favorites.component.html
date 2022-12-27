@@ -2,8 +2,11 @@
   <h2>Favoritos</h2>
 
   <ul>
-    <li>
-      <!-- aqui fazer ngFor do array de favoritos vindos do redux -->
+    <li *ngFor="let movie of favorites$ | async" [title]="movie.title">
+      <img [src]="baseUrl+movie.poster_path" alt="poster do filme">
+      <span> {{movie.title}}</span>
+      <i class="material-icons">add_shopping_cart</i>
+      <i class="material-icons">delete</i>
     </li>
   </ul>
 </nav>
