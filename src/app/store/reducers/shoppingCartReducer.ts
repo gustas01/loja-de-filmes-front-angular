@@ -11,9 +11,9 @@ export const shoppingCartReducer = createReducer(
     on(AddToCart, (state: ImovieFormatDatabase[], movie:ImovieFormatDatabase) => {
         const newState = [...state, movie]
         return newState}),
-    on(RemoveFromCart, (state: ImovieFormatDatabase[], movie:ImovieFormatDatabase) => {
+    on(RemoveFromCart, (state: ImovieFormatDatabase[], {id}) => {
         let newState = [...state]
-        newState = newState.filter(el => el.id !== movie.id)
+        newState = newState.filter(el => el.id !== id)
         return newState
     }),
     on(ClearCart, () => {

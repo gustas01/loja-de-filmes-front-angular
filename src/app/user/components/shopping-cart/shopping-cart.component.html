@@ -5,7 +5,7 @@
     <li *ngFor="let movie of shoppingCart$ | async" [title]="movie.title">
       <img [src]="baseUrl+movie.poster_path" alt="poster do filme">
       <span> {{movie.title}}</span>
-      <i class="material-icons">delete</i>
+      <i class="material-icons" (click)="removeFromCart(movie.id)">delete</i>
     </li>
   </ul>
 </nav>

@@ -75,7 +75,7 @@ export class CardComponent implements OnInit, AfterViewInit  {
       this.inCart = true 
     }
     else{
-      this.store.dispatch(RemoveFromCart(filterMovieData))
+      this.store.dispatch(RemoveFromCart({id: filterMovieData.id}))
       this.inCart = false      
     }
 
