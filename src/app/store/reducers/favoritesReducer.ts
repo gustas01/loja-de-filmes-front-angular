@@ -11,9 +11,9 @@ export const favoritesReducer = createReducer(
     on(AddToFavorites, (state: ImovieFormatDatabase[], movie:ImovieFormatDatabase) => {
         const newState = [...state, movie]
         return newState}),
-    on(RemoveFromFavorites, (state: ImovieFormatDatabase[], movie: ImovieFormatDatabase) => {
+    on(RemoveFromFavorites, (state: ImovieFormatDatabase[], {id}) => {
         let newState = [...state]
-        newState = newState.filter(el => el.id !== movie.id)
+        newState = newState.filter(el => el.id !== id)
         return newState
     }),
     on(ClearFavorites, () => {

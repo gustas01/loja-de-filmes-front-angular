@@ -97,7 +97,7 @@ export class CardComponent implements OnInit, AfterViewInit  {
       this.inFavorites = true 
     }
     else{
-      this.store.dispatch(RemoveFromFavorites(filterMovieData))
+      this.store.dispatch(RemoveFromFavorites({id: filterMovieData.id}))
       this.inFavorites = false      
     }
     this.userService.setFavorites([...this.favoritesArray]).subscribe();

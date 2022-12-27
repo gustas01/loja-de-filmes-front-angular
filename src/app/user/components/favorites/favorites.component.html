@@ -6,7 +6,7 @@
       <img [src]="baseUrl+movie.poster_path" alt="poster do filme">
       <span> {{movie.title}}</span>
       <i class="material-icons">add_shopping_cart</i>
-      <i class="material-icons">delete</i>
+      <i class="material-icons" (click)="removeFromFavorites(movie.id)">delete</i>
     </li>
   </ul>
 </nav>
