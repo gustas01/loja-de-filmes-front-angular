@@ -4,3 +4,5 @@
     <app-card [movie]="movie" class="fadeIn"></app-card>
   </ng-template>
 </main>
+
+<mat-paginator *ngIf="movies.length" hidePageSize="true" [length]="listLength" [pageSize]="pageSize" (page)="changePage($event)" aria-label="Select page"></mat-paginator>

@@ -54,6 +54,18 @@ export class HeaderComponent implements OnInit {
         if(res.token){
           this.token = res.token
           this.user = this.userService.decodeToken(this.token)
+
+          this.shoppingCart$.subscribe({
+            next: res => {
+              this.shoppingCartLength = res.length
+            }
+           })
+    
+          this.favorites$.subscribe({
+            next: res => {
+              this.favoritesLength = res.length
+            }
+          })
         }else{
           this.token = ''
         }
@@ -64,8 +76,6 @@ export class HeaderComponent implements OnInit {
   
 
   submitNameMovie(form: NgForm ){
-    //implementar chamanda na API que busca filme por nome
-    // console.log(form.value.moviename);
     this.searchService.search(form.value.moviename)
   }
 

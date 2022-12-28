@@ -5,6 +5,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { MoviesModule } from '../movies/movies.module';
@@ -36,7 +37,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatProgressSpinnerModule,
     MatCardModule,
     MatButtonModule,
-    NgbModule
+    NgbModule,
+    MatPaginatorModule
   ]
 })
 export class PagesModule { }
