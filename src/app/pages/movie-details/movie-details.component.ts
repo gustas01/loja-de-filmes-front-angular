@@ -74,10 +74,10 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
 
 
         //se o filme já estiver no carrinho, inCart = true, e o botão já inicia com o estilo
-        this.shoppingCartArray.filter(movie => {movie.id === this.movie.id ? this.inCart = true : this.inCart})
+        this.inCart = this.shoppingCartArray.some(movie => movie.id === this.movie.id)
         
         //se o filme já estiver nos favoritos, inFavorites = true, e o coração já inicia vermelho
-        this.favoritesArray.filter(movie => {movie.id === this.movie.id ? this.inFavorites = true: this.inFavorites})
+        this.inFavorites = this.favoritesArray.some(movie => movie.id === this.movie.id)
         
       },
       error: err => {
@@ -101,7 +101,7 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
       title: this.movie.title
     }
 
-    if(this.shoppingCartArray.filter(el => el.id === this.movie.id).length === 0){
+    if(!this.shoppingCartArray.some(el => el.id === this.movie.id)){
       this.store.dispatch(AddToCart(filterMovieData))  
       this.inCart = true 
     }
@@ -121,7 +121,7 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
       title: this.movie.title
     }
 
-    if(this.favoritesArray.filter(el => el.id === this.movie.id).length === 0){
+    if(!this.favoritesArray.some(el => el.id === this.movie.id)){
       this.store.dispatch(AddToFavorites(filterMovieData))
       this.inFavorites = true 
     }

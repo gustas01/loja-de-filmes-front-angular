@@ -40,13 +40,13 @@ export class CardComponent implements OnInit, AfterViewInit  {
     this.shoppingCart$.subscribe({
       next: res => {
         this.shoppingCartArray = res
-        this.shoppingCartArray.filter(movie => {movie.id === this.movie.id ? this.inCart = true : this.inCart})
+        this.inCart = this.shoppingCartArray.some(movie => movie.id === this.movie.id)
       }})
 
     this.favorites$.subscribe({
       next: res => {
         this.favoritesArray = res
-        this.favoritesArray.filter(movie => {movie.id === this.movie.id ? this.inFavorites = true: this.inFavorites})
+        this.inFavorites = this.favoritesArray.some(movie => movie.id === this.movie.id)
       }})
   }
 
@@ -70,7 +70,7 @@ export class CardComponent implements OnInit, AfterViewInit  {
       title: this.movie.title
     }
 
-    if(this.shoppingCartArray.filter(el => el.id === this.movie.id).length === 0){
+    if(!this.shoppingCartArray.some(el => el.id === this.movie.id)){
       this.store.dispatch(AddToCart(filterMovieData))  
       this.inCart = true 
     }
@@ -92,7 +92,7 @@ export class CardComponent implements OnInit, AfterViewInit  {
       title: this.movie.title
     }
 
-    if(this.favoritesArray.filter(el => el.id === this.movie.id).length === 0){
+    if(!this.favoritesArray.some(el => el.id === this.movie.id)){
       this.store.dispatch(AddToFavorites(filterMovieData))
       this.inFavorites = true 
     }
