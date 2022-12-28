@@ -16,7 +16,6 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { UpdateComponent } from './update/update.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -26,7 +25,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UpdateComponent,
     MovieDetailsComponent,
     LoginSignupComponent,
-    NotFoundComponent
   ],
   imports: [
     CommonModule,

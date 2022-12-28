@@ -7,7 +7,6 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { HomeComponent } from './home/home.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
@@ -36,11 +35,6 @@ const routes: Routes = [
     path: 'update',
     component: UpdateComponent,
     title: 'Dados da sua conta'
-  },
-  {
-    path: '**',
-    component: NotFoundComponent,
-    title: 'Endereço não encontrado'
   },
 ];
 
