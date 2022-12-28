@@ -49,8 +49,8 @@ export class MovieService {
     return this.http.get<IPageOfMovies>(`${environment.baseUrl}/related/${id}`)
   }
 
-  public getSearchedMovie(movieName: string): Observable<IPageOfMovies>{
-    return this.http.get<IPageOfMovies>(`${environment.baseUrl}/search/${movieName}/1`)
+  public getSearchedMovie(movieName: string, page: number = 1): Observable<IPageOfMovies>{
+    return this.http.get<IPageOfMovies>(`${environment.baseUrl}/search/${movieName}/${page}`)
   }
 
   private onError(errorMsg: string){

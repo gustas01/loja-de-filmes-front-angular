@@ -5,4 +5,4 @@
   </ng-template>
 </main>
 
-<mat-paginator *ngIf="movies.length" hidePageSize="true" [length]="listLength" [pageSize]="pageSize" (page)="changePage($event)" aria-label="Select page"></mat-paginator>
+<mat-paginator [pageIndex]="currentPage" *ngIf="movies.length" hidePageSize="true" [length]="listLength" pageSize="20" (page)="changePage($event)" aria-label="Select page"></mat-paginator>

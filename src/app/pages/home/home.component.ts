@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { forkJoin, Subject } from 'rxjs';
+import { forkJoin } from 'rxjs';
 import { IMovie } from 'src/app/models/imovie';
 import { MovieService } from 'src/app/movies/services/movie.service';
 import { SearchService } from 'src/app/services/search.service';
@@ -13,19 +13,18 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class HomeComponent implements OnInit {
   public movies: IMovie[] = []
+  public movieNameSearch = ''
 
-  public pageEvent!: PageEvent;
-  public pageSize!: number
   public listLength!:number
 
+  public currentPage = 0
 
   constructor(private movieService: MovieService, private searchService: SearchService) {
     searchService.movieNameSearchObservable$.subscribe({
       next: res => {
-        //esse res acima é o nome do filme pesquisado
-        this.movieService.getSearchedMovie(res).subscribe({
-          next: res => this.movies = res.results
-        })
+        this.currentPage = 0
+        this.movieNameSearch = res
+        this.loadContent(1)
       }
     })
    }
@@ -34,14 +33,17 @@ export class HomeComponent implements OnInit {
     this.loadContent(1)
   }
 
-  loadContent(page: number){
-    const getMovies = this.movieService.getMovies(page)
+  loadContent(page: number){   
+    let getMovies
+    if(this.movieNameSearch) getMovies = this.movieService.getSearchedMovie(this.movieNameSearch, page)
+    else getMovies = this.movieService.getMovies(page)
+    
+
     const getGenres = this.movieService.getGenres()
 
     forkJoin([getMovies, getGenres]).subscribe({
       next: res => {
-        this.movies = res[0].results
-        this.pageSize = res[0].results.length
+        this.movies = res[0].results        
         this.listLength = res[0].total_results
 
         this.movies.map(movie => movie.mainGenre = res[1].genres.filter(genre =>
@@ -53,7 +55,11 @@ export class HomeComponent implements OnInit {
 
 
   changePage(evento: PageEvent){
-    this.loadContent(evento.pageIndex+1)
-    window.scrollTo(0, 0)
+    if(evento.previousPageIndex && evento.previousPageIndex > evento.pageIndex)
+      this.currentPage--
+    else this.currentPage++
+    
+    this.loadContent(this.currentPage+1)
+    window.scrollTo(0, 0)    
   }
 }
