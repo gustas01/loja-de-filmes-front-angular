@@ -22,6 +22,8 @@ export class HeaderComponent implements OnInit {
 
   private shoppingCart$!: Observable<ImovieFormatDatabase[]>
   private favorites$!: Observable<ImovieFormatDatabase[]>
+  public shoppingCartLength: number = 0
+  public favoritesLength: number = 0
 
 
   constructor(private userService: UserService, private searchService: SearchService, private store: Store<IState>) {
@@ -36,14 +38,14 @@ export class HeaderComponent implements OnInit {
 
        this.shoppingCart$.subscribe({
         next: res => {
-          //aqui vou pegar o res.length pra usar no ícone de notificação do carrinho
-          console.log(res)}
+          this.shoppingCartLength = res.length
+        }
        })
 
        this.favorites$.subscribe({
         next: res => {
-          //aqui vou pegar o res.length pra usar no ícone de notificação dos favoritos
-          console.log(res)}
+          this.favoritesLength = res.length
+        }
        })
     }
     
@@ -51,7 +53,6 @@ export class HeaderComponent implements OnInit {
       res => {
         if(res.token){
           this.token = res.token
-          
           this.user = this.userService.decodeToken(this.token)
         }else{
           this.token = ''

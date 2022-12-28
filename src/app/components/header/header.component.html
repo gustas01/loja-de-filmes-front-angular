@@ -27,11 +27,11 @@
         <button mat-menu-item (click)="logout()">Sair</button>
       </mat-menu>
 
-      <i class="material-icons" (click)="toggleFavoritesNav()">
+      <i class="material-icons" [matBadge]="favoritesLength" (click)="toggleFavoritesNav()">
         favorite
       </i>
 
-      <i class="material-icons" (click)="toggleShoppingCartNav()">
+      <i class="material-icons" [matBadge]="shoppingCartLength" (click)="toggleShoppingCartNav()">
         shopping_cart
       </i>
     </div>
