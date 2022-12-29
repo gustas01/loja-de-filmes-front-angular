@@ -1,3 +1,114 @@
-<section>
-   checkout 
-</section>
+<main>
+  <mat-stepper orientation="vertical" [linear]="false" #stepper>
+    <mat-step [stepControl]="personalData">
+      <form [formGroup]="personalData">
+        <ng-template matStepLabel>Seus dados pessoais</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Nome completo" formControlName="name">
+          <mat-error *ngIf="this.personalData.controls.name.errors">
+            O nome é obrigatório
+          </mat-error>
+        </mat-form-field> <br> <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Telefone</mat-label>
+          <input matInput placeholder="(xx) xxxx-xxxx" formControlName="fone">
+          <mat-error *ngIf="this.personalData.controls.name.errors">
+            Digite um telefone válido
+          </mat-error>
+        </mat-form-field> <br> <br>
+
+        <div>
+          <button mat-button matStepperNext>Próximo passo</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="address">
+      <form [formGroup]="address">
+        <ng-template matStepLabel>Endereço</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>CEP</mat-label>
+          <input matInput formControlName="cep" placeholder="Ex. 99999-999">
+          <mat-error *ngIf="this.address.controls.cep.errors">
+            Digite um CEP válido
+          </mat-error>
+        </mat-form-field> <br> <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Número</mat-label>
+          <input matInput formControlName="numberOfHouse" placeholder="Ex. 99999-999">
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Próximo passo</button>
+          <button mat-button matStepperNext>Passo anterior</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="creditCardDetails">
+      <form [formGroup]="creditCardDetails">
+        <ng-template matStepLabel>Pagamento</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" placeholder="Nome como está no cartão">
+          <mat-error *ngIf="this.creditCardDetails.controls.name.errors">
+            O nome é obrigatório
+          </mat-error>
+        </mat-form-field> <br> <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Número do cartão</mat-label>
+          <input matInput formControlName="numberOfCard" placeholder="Ex. 9999-9999-9999-9999">
+          <mat-error *ngIf="this.creditCardDetails.controls.numberOfCard.errors">
+            Digite um número de cartão válido
+          </mat-error>
+        </mat-form-field> <br> <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>CVV</mat-label>
+          <input matInput formControlName="cvv">
+          <mat-error *ngIf="this.creditCardDetails.controls.cvv.errors">
+            Digite o CVV correto
+          </mat-error>
+        </mat-form-field> <br> <br>
+
+        <div>
+          <button mat-button matStepperPrevious>Próximo passo</button>
+          <button mat-button matStepperNext>Passo anterior</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>Está quase tudo pronto.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-raised-button color="primary" (click)="checkout()">Confirmar compra</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+
+
+
+
+
+  <section>
+    <h2>Itens do carrinho</h2>
+
+    <ul>
+      <li li *ngFor="let movie of shoppingCart$ | async" [title]="movie.title">
+        <img [src]="baseUrl+movie.poster_path" alt="poster do filme">
+        <span> {{movie.title}}</span>
+        <i class="material-icons" (click)="removeFromCart(movie.id)">delete</i>
+      </li>
+    </ul>
+  </section>
+
+</main>
