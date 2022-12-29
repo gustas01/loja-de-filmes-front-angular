@@ -67,7 +67,8 @@ export class CardComponent implements OnInit, AfterViewInit  {
     const filterMovieData = {
       id: this.movie.id,
       poster_path: this.movie.poster_path,
-      title: this.movie.title
+      title: this.movie.title,
+      price: 10
     }
 
     if(!this.shoppingCartArray.some(el => el.id === this.movie.id)){
@@ -89,7 +90,8 @@ export class CardComponent implements OnInit, AfterViewInit  {
     const filterMovieData = {
       id: this.movie.id,
       poster_path: this.movie.poster_path,
-      title: this.movie.title
+      title: this.movie.title,
+      price: 10
     }
 
     if(!this.favoritesArray.some(el => el.id === this.movie.id)){
