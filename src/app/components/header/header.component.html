@@ -23,7 +23,7 @@
       <a routerLink="loginsignup" *ngIf="!token">Entrar</a>
       <button mat-button [matMenuTriggerFor]="beforeMenu" *ngIf="token">{{ user.name }}</button>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
-        <button mat-menu-item>Atualizar dados</button>
+        <button mat-menu-item routerLink="update">Atualizar dados</button>
         <button mat-menu-item (click)="logout()">Sair</button>
       </mat-menu>
 

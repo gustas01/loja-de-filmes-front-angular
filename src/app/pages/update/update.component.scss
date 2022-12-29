@@ -1,0 +1,37 @@
+@use 'src/config-scss/rem-calc.scss' as *;
+
+.mat-card{
+  height: calc(100vh - 64px);
+  width: 35%;
+  margin: 0 auto;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+
+  img{
+    width: rem-calc(160);
+    align-self: center;
+  }
+
+  .mat-label{
+    padding-left: rem-calc(35);
+  }
+
+  span{
+    display: flex;
+    align-items: center;
+
+    input{
+      padding-left: rem-calc(10);
+    }
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    font-size: rem-calc(20);
+    gap: 20px;
+  }
+
+}
+

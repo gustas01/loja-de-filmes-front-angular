@@ -68,6 +68,18 @@ export class UserService {
     this.router.navigate([''])
   }
 
+  update(user: any): Observable<any>{
+    const headers = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Authorization": `Bearer ${this.getCookie('token')}`,
+      })
+    }
+    
+    return this.http.put<any>(`http://localhost:3001/users`, user, headers)
+  }
+
   showMessage(msg: string, isError: boolean = false){
     this.snackBar.open(msg, 'X', {
       duration: 3000,

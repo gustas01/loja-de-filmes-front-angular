@@ -85,17 +85,31 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
+    this.openFavorites = false
+    this.openShoppingCart = false
     this.userService.logout()
   }
 
   toggleFavoritesNav(){
+    if(!this.userService.getCookie('token')){
+      this.userService.showMessage("Você deve logar para abrir os favoritos", true)
+      return
+    }
     if(this.openShoppingCart) this.openShoppingCart = false
+    if(this.router.url === '/update'){
+      this.openFavorites = false
+      return
+    }
     this.openFavorites = !this.openFavorites
   }
 
   toggleShoppingCartNav(){
+    if(!this.userService.getCookie('token')){
+      this.userService.showMessage("Você deve logar para abrir o carrinho", true)
+      return
+    }
     if(this.openFavorites) this.openFavorites = false
-    if(this.router.url === '/checkout'){
+    if(this.router.url === '/checkout' || this.router.url === '/update'){
       this.openShoppingCart = false
       return
     }
