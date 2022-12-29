@@ -13,7 +13,7 @@
       list-style: none;
       width: 100%;
       padding: 0 16px;
-      height: calc(100vh - 190px);
+      height: calc(100vh - 220px);
       overflow: auto;
 
       &::-webkit-scrollbar{
@@ -50,6 +50,10 @@
           cursor: pointer;
         }
       }
+    }
+
+    span{
+      margin-bottom: 10px;
     }
 
     button{

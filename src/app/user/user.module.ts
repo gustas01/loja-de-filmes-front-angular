@@ -1,7 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import localePt from '@angular/common/locales/pt'
+import { registerLocaleData } from '@angular/common';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
@@ -19,6 +21,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
+registerLocaleData(localePt)
 
 @NgModule({
   declarations: [
@@ -42,6 +45,10 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     MatSnackBarModule,
     MatCheckboxModule
   ],
-  exports: [FavoritesComponent, ShoppingCartComponent, LoginComponent, SignupComponent]
+  exports: [FavoritesComponent, ShoppingCartComponent, LoginComponent, SignupComponent],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: 'pt-BR'
+  }]
 })
 export class UserModule { }

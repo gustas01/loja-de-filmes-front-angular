@@ -16,12 +16,15 @@ import { UserService } from '../../services/user.service';
 export class ShoppingCartComponent implements OnInit {
   shoppingCart$!: Observable<ImovieFormatDatabase[]>
   baseUrl = constants.baseURLImagesW45
+  totalPrice: number = 0
 
   constructor(private store: Store<IState>, private userService: UserService, private notificationService: NotificationService) {
     this.shoppingCart$ = store.select((state: IState) => state.shoppingCart)
    }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.calculatedPrice()
+   }
 
 
   removeFromCart(id: number){
@@ -34,5 +37,14 @@ export class ShoppingCartComponent implements OnInit {
 
   notifyCloseCart(){
     this.notificationService.closeCart(false)
+  }
+
+
+  calculatedPrice(){
+    this.shoppingCart$.subscribe({
+      next: res => {
+        this.totalPrice = res.map(el => el.price).reduce((el1, el2) => el1 + el2, 0)
+      }
+    })
   }
 }
