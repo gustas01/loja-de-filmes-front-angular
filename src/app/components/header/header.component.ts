@@ -77,6 +77,11 @@ export class HeaderComponent implements OnInit {
         }
       }
     )
+    
+    if(localStorage.getItem('isLight') === 'true')
+      this.isLight = true 
+    
+    this.isLight ? document.body.classList.add('light-theme') : document.body.classList.remove('light-theme')
   } 
 
   
@@ -119,6 +124,7 @@ export class HeaderComponent implements OnInit {
 
   changeTheme(){
     this.isLight = !this.isLight
+    localStorage.setItem('isLight', JSON.stringify(this.isLight))
     this.isLight ? document.body.classList.add('light-theme') : document.body.classList.remove('light-theme')
   }
 }
