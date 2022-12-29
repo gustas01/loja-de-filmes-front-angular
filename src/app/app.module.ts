@@ -23,12 +23,14 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
+import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ErrorDialogComponent,
+    SuccessDialogComponent,
   ],
   imports: [
     BrowserModule,

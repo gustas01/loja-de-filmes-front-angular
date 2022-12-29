@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { SuccessDialogComponent } from 'src/app/components/success-dialog/success-dialog.component';
 import { ImovieFormatDatabase } from 'src/app/models/imovie-format-database';
 import { IState } from 'src/app/models/istate';
-import { RemoveFromCart } from 'src/app/store/actions/shoppingCart.actions';
+import { ClearCart, RemoveFromCart } from 'src/app/store/actions/shoppingCart.actions';
 import { UserService } from 'src/app/user/services/user.service';
 import constants from 'src/app/utils/contansts';
 
@@ -32,7 +35,7 @@ export class CheckoutComponent implements OnInit {
   });
 
 
-  constructor(private _formBuilder: FormBuilder, private store: Store<IState>, private userService: UserService) {
+  constructor(private _formBuilder: FormBuilder, private store: Store<IState>, private userService: UserService, public dialog: MatDialog, private router: Router) {
     this.shoppingCart$ = store.select((state: IState) => state.shoppingCart)
    }
 
@@ -49,7 +52,20 @@ export class CheckoutComponent implements OnInit {
 
   
   checkout(){
-    
+    this.userService.setShoppingCart([]).subscribe({
+      next: () => {
+        this.store.dispatch(ClearCart())
+        this.router.navigate([''])
+        this.dialog.open(SuccessDialogComponent, {
+          data: 'Compra finalizada com sucesso!'
+        })
+      },
+      error: () => {
+        this.dialog.open(SuccessDialogComponent, {
+          data: 'Falha ao finalizar compra!'
+        })
+      }
+    })
   }
 
 }
