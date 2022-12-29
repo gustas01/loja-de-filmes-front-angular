@@ -9,7 +9,7 @@
       <span class="movieStars">{{ movie.vote_average.toFixed(2)}} <i class="material-icons">star</i></span>
     </mat-card-content>
     <mat-card-actions class="actions">
-      <button mat-raised-button color="warn" (click)="addOrRemoveFromCart($event)" [ngClass]="{'inCart': inCart}">
+      <button mat-raised-button color="primary" (click)="addOrRemoveFromCart($event)" [ngClass]="{'inCart': inCart}">
         <i class="material-icons" *ngIf="inCart">check</i>
         Carrinho<i class="material-icons">add_shopping_cart</i>
       </button>

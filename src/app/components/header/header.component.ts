@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   public openShoppingCart: boolean = false
   public token: string = ''
   public user!: ITokenPayload
+  public isLight: boolean = false
 
   private shoppingCart$!: Observable<ImovieFormatDatabase[]>
   private favorites$!: Observable<ImovieFormatDatabase[]>
@@ -116,4 +117,8 @@ export class HeaderComponent implements OnInit {
     this.openShoppingCart = !this.openShoppingCart
   }
 
+  changeTheme(){
+    this.isLight = !this.isLight
+    this.isLight ? document.body.classList.add('light-theme') : document.body.classList.remove('light-theme')
+  }
 }

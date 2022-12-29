@@ -18,6 +18,6 @@ export class AppComponent implements OnInit{
       this.store.dispatch(TriggerLoadFavorites())
     }else
       this.userService.logout()
-  }
+    }
 
 }

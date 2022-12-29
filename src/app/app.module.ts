@@ -6,6 +6,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -46,6 +47,7 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
     MatButtonModule,
     MatMenuModule,
     MatBadgeModule,
+    MatSlideToggleModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     EffectsModule.forRoot([AppEffects]),
   ],

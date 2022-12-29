@@ -25,6 +25,24 @@ a{
   color: white;
 }
 
+@import '@angular/material/theming';
+@include mat-core();
+
+$mat-color-primary: mat-palette($mat-deep-purple, 700);
+$mat-color-secondary: mat-palette($mat-amber, A700, A400, 700);
+$mat-color-warn: mat-palette($mat-red);
+
+$mat-theme-white: mat-light-theme($mat-color-primary, $mat-color-secondary, $mat-color-warn);
+
+
+.light-theme{
+  @include angular-material-theme($mat-theme-white);
+}
+
+
+
+
+
 
 
 /* Importing Bootstrap SCSS file. */

@@ -31,11 +31,11 @@
       align-items: center;
       width: rem-calc(500);
       border-radius: 10px;
-      padding-right: 2.5px;
-      border: 2px solid #424242;
+      margin: 2.5px;
+      border: 2px solid #fff;
       
       input{
-        border-radius: 10px 0 0 10px;
+        border-radius: 5px 0 0 5px;
         width: 100%;
         font-size: rem-calc(20);
         padding: 2px 7px;
@@ -45,7 +45,11 @@
     }
     
     form:focus-within{
-      border: 2px solid #303030;
+      border: 2px solid #fff;
+    }
+
+    .theme-button{
+      padding: 0 5px;
     }
 
     &__buttons{
@@ -102,6 +106,7 @@
     }
     button{
       font-size: 1.3rem;
+      padding: 0;
     }
   }
 
