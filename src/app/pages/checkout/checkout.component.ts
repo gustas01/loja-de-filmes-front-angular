@@ -57,12 +57,12 @@ export class CheckoutComponent implements OnInit {
         this.store.dispatch(ClearCart())
         this.router.navigate([''])
         this.dialog.open(SuccessDialogComponent, {
-          data: 'Compra finalizada com sucesso!'
+          data: {titleMsg: 'Sucesso!', bodyMsg: 'Compra finalizada com sucesso!'}
         })
       },
       error: () => {
         this.dialog.open(SuccessDialogComponent, {
-          data: 'Falha ao finalizar compra!'
+          data: {titleMsg: 'Erro!', bodyMsg: 'Falha ao finalizar compra!'}
         })
       }
     })
