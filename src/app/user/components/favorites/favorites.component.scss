@@ -53,3 +53,9 @@
     }
   }
 }
+
+@media (max-width: 599px){
+  ul{
+    height: calc(100vh - 185px) !important;
+  }
+}
