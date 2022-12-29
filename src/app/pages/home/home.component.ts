@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { IMovie } from 'src/app/models/imovie';
 import { MovieService } from 'src/app/movies/services/movie.service';
-import { SearchService } from 'src/app/services/search.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 import { PageEvent } from '@angular/material/paginator';
 
@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit {
 
   public currentPage = 0
 
-  constructor(private movieService: MovieService, private searchService: SearchService) {
-    searchService.movieNameSearchObservable$.subscribe({
+  constructor(private movieService: MovieService, private notificationService: NotificationService) {
+    notificationService.movieNameSearchObservable$.subscribe({
       next: res => {
         this.currentPage = 0
         this.movieNameSearch = res

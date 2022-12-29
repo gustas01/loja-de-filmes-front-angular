@@ -8,5 +8,5 @@
       <i class="material-icons" (click)="removeFromCart(movie.id)">delete</i>
     </li>
   </ul>
-  <button mat-raised-button color="primary">Prosseguir com a compra</button>
+  <button (click)="notifyCloseCart()" routerLink="/checkout" mat-raised-button color="primary">Prosseguir com a compra</button>
 </nav>

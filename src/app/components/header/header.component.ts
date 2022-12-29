@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { ITokenPayload } from 'src/app/models/i-token-payload';
 import { ImovieFormatDatabase } from 'src/app/models/imovie-format-database';
 import { IState } from 'src/app/models/istate';
-import { SearchService } from 'src/app/services/search.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
@@ -26,12 +27,16 @@ export class HeaderComponent implements OnInit {
   public favoritesLength: number = 0
 
 
-  constructor(private userService: UserService, private searchService: SearchService, private store: Store<IState>) {
+  constructor(private userService: UserService, private notificationService: NotificationService, private store: Store<IState>, private router: Router) {
     this.shoppingCart$ = store.select((state: IState) => state.shoppingCart)
     this.favorites$ = store.select((state: IState) => state.favorites)
+
+    notificationService.closeCartInCheckoutObservable$.subscribe({
+      next: res => this.openShoppingCart = res
+    })
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     if(this.userService.getCookie('token')){
       this.token = this.userService.getCookie('token')
        this.user = this.userService.decodeToken(this.token)
@@ -76,7 +81,7 @@ export class HeaderComponent implements OnInit {
   
 
   submitNameMovie(form: NgForm ){
-    this.searchService.search(form.value.moviename)
+    this.notificationService.search(form.value.moviename)
   }
 
   logout(){
@@ -90,6 +95,10 @@ export class HeaderComponent implements OnInit {
 
   toggleShoppingCartNav(){
     if(this.openFavorites) this.openFavorites = false
+    if(this.router.url === '/checkout'){
+      this.openShoppingCart = false
+      return
+    }
     this.openShoppingCart = !this.openShoppingCart
   }
 
