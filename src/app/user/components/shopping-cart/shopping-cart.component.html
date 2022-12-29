@@ -9,5 +9,5 @@
     </li>
   </ul>
   <span> Preço total do carrinho: {{ totalPrice | currency: 'BRL' }} </span>
-  <button (click)="notifyCloseCart()" routerLink="/checkout" mat-raised-button color="primary">Prosseguir com a compra</button>
+  <button (click)="notifyCloseCart()" [disabled]="!totalPrice" routerLink="/checkout" mat-raised-button color="primary">Prosseguir com a compra</button>
 </nav>

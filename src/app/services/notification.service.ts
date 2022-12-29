@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -11,9 +12,10 @@ export class NotificationService {
   private closeCartInCheckout = new Subject<boolean>()
   public closeCartInCheckoutObservable$ = this.closeCartInCheckout.asObservable()
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   search(movieName: string){
+    this.router.navigate([''])
     this.movieNameSearch.next(movieName)
   }
 

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../guards/auth.guard';
+import { LogedIn } from '../guards/loged-in.guard';
+import { NotLogedInGuard } from '../guards/not-loged-in.guard';
 import { CheckoutComponent } from './checkout/checkout.component';
 
 //components
@@ -18,13 +19,14 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
-    title: 'Finalizar a compra'
+    title: 'Finalizar a compra',
+    canActivate: [NotLogedInGuard]
   },
   {
     path: 'loginsignup',
     component: LoginSignupComponent,
     title: 'Login - Criar conta',
-    canActivate: [AuthGuard]
+    canActivate: [LogedIn]
   },
   {
     path: 'details/:id',
@@ -34,7 +36,8 @@ const routes: Routes = [
   {
     path: 'update',
     component: UpdateComponent,
-    title: 'Dados da sua conta'
+    title: 'Dados da sua conta',
+    canActivate: [NotLogedInGuard]
   },
 ];
 
