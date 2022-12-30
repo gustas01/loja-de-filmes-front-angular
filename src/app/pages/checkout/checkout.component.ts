@@ -19,6 +19,7 @@ import constants from 'src/app/utils/contansts';
 export class CheckoutComponent implements OnInit {
   shoppingCart$!: Observable<ImovieFormatDatabase[]>
   baseUrl = constants.baseURLImagesW45
+  totalPrice: number = 0
 
   personalData = this._formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
@@ -40,6 +41,7 @@ export class CheckoutComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.calculatedPrice()
   }
 
 
@@ -64,6 +66,14 @@ export class CheckoutComponent implements OnInit {
         this.dialog.open(SuccessDialogComponent, {
           data: {titleMsg: 'Erro!', bodyMsg: 'Falha ao finalizar compra!'}
         })
+      }
+    })
+  }
+
+  calculatedPrice(){
+    this.shoppingCart$.subscribe({
+      next: res => {
+        this.totalPrice = res.map(el => el.price).reduce((el1, el2) => el1 + el2, 0)
       }
     })
   }

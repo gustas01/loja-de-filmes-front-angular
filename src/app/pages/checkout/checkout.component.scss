@@ -57,3 +57,9 @@ main{
           }
     }
 }
+
+@media (max-width: 813px){
+  .mat-stepper-vertical, section{
+    justify-self: center !important;
+  }
+}

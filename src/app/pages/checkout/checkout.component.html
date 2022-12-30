@@ -109,6 +109,8 @@
         <i class="material-icons" (click)="removeFromCart(movie.id)">delete</i>
       </li>
     </ul>
+    <hr>
+    Preço total do carrinho: {{ totalPrice | currency: 'BRL' }}
   </section>
 
 </main>
