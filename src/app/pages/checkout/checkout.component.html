@@ -85,11 +85,11 @@
 
 
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
+      <ng-template matStepLabel>Finalizar</ng-template>
       <p>Está quase tudo pronto.</p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button matStepperPrevious>Passo anterior</button>
+        <button mat-button (click)="stepper.reset()">Resetar</button>
         <button mat-raised-button color="primary" (click)="checkout()">Confirmar compra</button>
       </div>
     </mat-step>
