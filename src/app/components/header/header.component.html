@@ -14,12 +14,8 @@
         </i>
       </form>
 
-    <i class="material-icons theme-button" (click)="changeTheme()" *ngIf="!isLight">
-      wb_sunny
-    </i>
-
-    <i class="material-icons theme-button" (click)="changeTheme()" *ngIf="isLight">
-      brightness_3
+    <i class="material-icons theme-button" (click)="changeTheme()">
+      {{ !isLight | themeModeIconChange }}
     </i>
 
     <div class="header__buttons">

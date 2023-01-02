@@ -25,6 +25,7 @@ import { reducers, metaReducers } from './store/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
+import { ThemeModeIconChangePipe } from './pipes/theme-mode-icon-change.pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
     HeaderComponent,
     ErrorDialogComponent,
     SuccessDialogComponent,
+    ThemeModeIconChangePipe,
   ],
   imports: [
     BrowserModule,
